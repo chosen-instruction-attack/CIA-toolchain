@@ -1,0 +1,18 @@
+call  0x15
+call  cx
+call  dword ptr [esi + edi]
+call  dword ptr [esi]
+call  ecx
+iret
+iretd
+lcall  0xa:0x10
+lcall  [esi + edi]
+lcall  [esi]
+leave
+ljmp  0xa:0x10
+ljmp  [esi + edi]
+ljmp  [esi]
+ret
+ret  0xa
+retf
+retf  0xa

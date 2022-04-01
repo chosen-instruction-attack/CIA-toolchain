@@ -1,0 +1,880 @@
+aaa
+aad
+aam
+aas
+adc  byte ptr [esi + edi], 0xa
+adc  byte ptr [esi + edi], cl
+adc  byte ptr [esi], 0xa
+adc  byte ptr [esi], cl
+adc  cl, 0xa
+adc  cl, byte ptr [esi + edi]
+adc  cl, byte ptr [esi]
+adc  cl, dl
+adc  cx, 0xa
+adc  cx, dx
+adc  cx, word ptr [esi + edi]
+adc  cx, word ptr [esi]
+adc  dword ptr [esi + edi], 0xa
+adc  dword ptr [esi + edi], ecx
+adc  dword ptr [esi], 0xa
+adc  dword ptr [esi], ecx
+adc  ecx, 0xa
+adc  ecx, dword ptr [esi + edi]
+adc  ecx, dword ptr [esi]
+adc  ecx, edx
+adc  word ptr [esi + edi], cx
+adc  word ptr [esi], cx
+adcx  ecx, dword ptr [esi + edi]
+adcx  ecx, dword ptr [esi]
+adcx  ecx, edx
+add  byte ptr [esi + edi], 0xa
+add  byte ptr [esi + edi], cl
+add  byte ptr [esi], 0xa
+add  byte ptr [esi], cl
+add  cl, 0xa
+add  cl, byte ptr [esi + edi]
+add  cl, byte ptr [esi]
+add  cl, dl
+add  cx, 0xa
+add  cx, dx
+add  cx, word ptr [esi + edi]
+add  cx, word ptr [esi]
+add  dword ptr [esi + edi], 0xa
+add  dword ptr [esi + edi], ecx
+add  dword ptr [esi], 0xa
+add  dword ptr [esi], ecx
+add  ecx, 0xa
+add  ecx, dword ptr [esi + edi]
+add  ecx, dword ptr [esi]
+add  ecx, edx
+add  word ptr [esi + edi], cx
+add  word ptr [esi], cx
+adox  ecx, dword ptr [esi + edi]
+adox  ecx, dword ptr [esi]
+adox  ecx, edx
+and  byte ptr [esi + edi], 0xa
+and  byte ptr [esi + edi], cl
+and  byte ptr [esi], 0xa
+and  byte ptr [esi], cl
+and  cl, 0xa
+and  cl, byte ptr [esi + edi]
+and  cl, byte ptr [esi]
+and  cl, dl
+and  cx, 0xa
+and  cx, dx
+and  cx, word ptr [esi + edi]
+and  cx, word ptr [esi]
+and  dword ptr [esi + edi], 0xa
+and  dword ptr [esi + edi], ecx
+and  dword ptr [esi], 0xa
+and  dword ptr [esi], ecx
+and  ecx, 0xa
+and  ecx, dword ptr [esi + edi]
+and  ecx, dword ptr [esi]
+and  ecx, edx
+and  word ptr [esi + edi], cx
+and  word ptr [esi], cx
+bound  cx, dword ptr [esi + edi]
+bound  cx, dword ptr [esi]
+bound  ecx, qword ptr [esi + edi]
+bound  ecx, qword ptr [esi]
+bsf  cx, dx
+bsf  cx, word ptr [esi + edi]
+bsf  cx, word ptr [esi]
+bsf  ecx, dword ptr [esi + edi]
+bsf  ecx, dword ptr [esi]
+bsf  ecx, edx
+bsr  cx, dx
+bsr  cx, word ptr [esi + edi]
+bsr  cx, word ptr [esi]
+bsr  ecx, dword ptr [esi + edi]
+bsr  ecx, dword ptr [esi]
+bsr  ecx, edx
+bswap  ecx
+bt  cx, 0xa
+bt  cx, dx
+bt  dword ptr [esi + edi], 0xa
+bt  dword ptr [esi + edi], ecx
+bt  dword ptr [esi], 0xa
+bt  dword ptr [esi], ecx
+bt  ecx, 0xa
+bt  ecx, edx
+bt  word ptr [esi + edi], cx
+bt  word ptr [esi], cx
+btc  cx, 0xa
+btc  cx, dx
+btc  dword ptr [esi + edi], 0xa
+btc  dword ptr [esi + edi], ecx
+btc  dword ptr [esi], 0xa
+btc  dword ptr [esi], ecx
+btc  ecx, 0xa
+btc  ecx, edx
+btc  word ptr [esi + edi], cx
+btc  word ptr [esi], cx
+btr  cx, 0xa
+btr  cx, dx
+btr  dword ptr [esi + edi], 0xa
+btr  dword ptr [esi + edi], ecx
+btr  dword ptr [esi], 0xa
+btr  dword ptr [esi], ecx
+btr  ecx, 0xa
+btr  ecx, edx
+btr  word ptr [esi + edi], cx
+btr  word ptr [esi], cx
+bts  cx, 0xa
+bts  cx, dx
+bts  dword ptr [esi + edi], 0xa
+bts  dword ptr [esi + edi], ecx
+bts  dword ptr [esi], 0xa
+bts  dword ptr [esi], ecx
+bts  ecx, 0xa
+bts  ecx, edx
+bts  word ptr [esi + edi], cx
+bts  word ptr [esi], cx
+cbw
+cdq
+clc
+cld
+clflush  byte ptr [esi + edi]
+clflush  byte ptr [esi]
+clflushopt  byte ptr [esi + edi]
+clflushopt  byte ptr [esi]
+cmc
+cmova  cx, dx
+cmova  cx, word ptr [esi + edi]
+cmova  cx, word ptr [esi]
+cmova  ecx, dword ptr [esi + edi]
+cmova  ecx, dword ptr [esi]
+cmova  ecx, edx
+cmovae  cx, dx
+cmovae  cx, word ptr [esi + edi]
+cmovae  cx, word ptr [esi]
+cmovae  ecx, dword ptr [esi + edi]
+cmovae  ecx, dword ptr [esi]
+cmovae  ecx, edx
+cmovb  cx, dx
+cmovb  cx, word ptr [esi + edi]
+cmovb  cx, word ptr [esi]
+cmovb  ecx, dword ptr [esi + edi]
+cmovb  ecx, dword ptr [esi]
+cmovb  ecx, edx
+cmovbe  cx, dx
+cmovbe  cx, word ptr [esi + edi]
+cmovbe  cx, word ptr [esi]
+cmovbe  ecx, dword ptr [esi + edi]
+cmovbe  ecx, dword ptr [esi]
+cmovbe  ecx, edx
+cmove  cx, dx
+cmove  cx, word ptr [esi + edi]
+cmove  cx, word ptr [esi]
+cmove  ecx, dword ptr [esi + edi]
+cmove  ecx, dword ptr [esi]
+cmove  ecx, edx
+cmovg  cx, dx
+cmovg  cx, word ptr [esi + edi]
+cmovg  cx, word ptr [esi]
+cmovg  ecx, dword ptr [esi + edi]
+cmovg  ecx, dword ptr [esi]
+cmovg  ecx, edx
+cmovge  cx, dx
+cmovge  cx, word ptr [esi + edi]
+cmovge  cx, word ptr [esi]
+cmovge  ecx, dword ptr [esi + edi]
+cmovge  ecx, dword ptr [esi]
+cmovge  ecx, edx
+cmovl  cx, dx
+cmovl  cx, word ptr [esi + edi]
+cmovl  cx, word ptr [esi]
+cmovl  ecx, dword ptr [esi + edi]
+cmovl  ecx, dword ptr [esi]
+cmovl  ecx, edx
+cmovle  cx, dx
+cmovle  cx, word ptr [esi + edi]
+cmovle  cx, word ptr [esi]
+cmovle  ecx, dword ptr [esi + edi]
+cmovle  ecx, dword ptr [esi]
+cmovle  ecx, edx
+cmovne  cx, dx
+cmovne  cx, word ptr [esi + edi]
+cmovne  cx, word ptr [esi]
+cmovne  ecx, dword ptr [esi + edi]
+cmovne  ecx, dword ptr [esi]
+cmovne  ecx, edx
+cmovno  cx, dx
+cmovno  cx, word ptr [esi + edi]
+cmovno  cx, word ptr [esi]
+cmovno  ecx, dword ptr [esi + edi]
+cmovno  ecx, dword ptr [esi]
+cmovno  ecx, edx
+cmovnp  cx, dx
+cmovnp  cx, word ptr [esi + edi]
+cmovnp  cx, word ptr [esi]
+cmovnp  ecx, dword ptr [esi + edi]
+cmovnp  ecx, dword ptr [esi]
+cmovnp  ecx, edx
+cmovns  cx, dx
+cmovns  cx, word ptr [esi + edi]
+cmovns  cx, word ptr [esi]
+cmovns  ecx, dword ptr [esi + edi]
+cmovns  ecx, dword ptr [esi]
+cmovns  ecx, edx
+cmovo  cx, dx
+cmovo  cx, word ptr [esi + edi]
+cmovo  cx, word ptr [esi]
+cmovo  ecx, dword ptr [esi + edi]
+cmovo  ecx, dword ptr [esi]
+cmovo  ecx, edx
+cmovp  cx, dx
+cmovp  cx, word ptr [esi + edi]
+cmovp  cx, word ptr [esi]
+cmovp  ecx, dword ptr [esi + edi]
+cmovp  ecx, dword ptr [esi]
+cmovp  ecx, edx
+cmovs  cx, dx
+cmovs  cx, word ptr [esi + edi]
+cmovs  cx, word ptr [esi]
+cmovs  ecx, dword ptr [esi + edi]
+cmovs  ecx, dword ptr [esi]
+cmovs  ecx, edx
+cmp  byte ptr [esi + edi], 0xa
+cmp  byte ptr [esi + edi], cl
+cmp  byte ptr [esi], 0xa
+cmp  byte ptr [esi], cl
+cmp  cl, 0xa
+cmp  cl, byte ptr [esi + edi]
+cmp  cl, byte ptr [esi]
+cmp  cl, dl
+cmp  cx, 0xa
+cmp  cx, dx
+cmp  cx, word ptr [esi + edi]
+cmp  cx, word ptr [esi]
+cmp  dword ptr [esi + edi], 0xa
+cmp  dword ptr [esi + edi], ecx
+cmp  dword ptr [esi], 0xa
+cmp  dword ptr [esi], ecx
+cmp  ecx, 0xa
+cmp  ecx, dword ptr [esi + edi]
+cmp  ecx, dword ptr [esi]
+cmp  ecx, edx
+cmp  word ptr [esi + edi], cx
+cmp  word ptr [esi], cx
+cmpxchg  byte ptr [esi + edi], cl
+cmpxchg  byte ptr [esi], cl
+cmpxchg  cl, dl
+cmpxchg  cx, dx
+cmpxchg  dword ptr [esi + edi], ecx
+cmpxchg  dword ptr [esi], ecx
+cmpxchg  ecx, edx
+cmpxchg  word ptr [esi + edi], cx
+cmpxchg  word ptr [esi], cx
+cmpxchg8b  qword ptr [esi + edi]
+cmpxchg8b  qword ptr [esi]
+cpuid
+crc32  ecx, byte ptr [esi + edi]
+crc32  ecx, byte ptr [esi]
+crc32  ecx, dword ptr [esi + edi]
+crc32  ecx, dword ptr [esi]
+crc32  ecx, edx
+cwd
+cwde
+daa
+das
+dec  ax
+dec  byte ptr [esi + edi]
+dec  byte ptr [esi]
+dec  cl
+dec  cx
+dec  dword ptr [esi + edi]
+dec  dword ptr [esi]
+dec  eax
+dec  ecx
+endbr32
+endbr64
+imul  byte ptr [esi + edi]
+imul  byte ptr [esi]
+imul  cl
+imul  cx
+imul  cx, dx
+imul  cx, dx, 0xa
+imul  cx, word ptr [esi + edi]
+imul  cx, word ptr [esi + edi], 0xa
+imul  cx, word ptr [esi]
+imul  cx, word ptr [esi], 0xa
+imul  dword ptr [esi + edi]
+imul  dword ptr [esi]
+imul  ecx
+imul  ecx, dword ptr [esi + edi]
+imul  ecx, dword ptr [esi + edi], 0xa
+imul  ecx, dword ptr [esi]
+imul  ecx, dword ptr [esi], 0xa
+imul  ecx, edx
+imul  ecx, edx, 0xa
+inc  ax
+inc  byte ptr [esi + edi]
+inc  byte ptr [esi]
+inc  cl
+inc  cx
+inc  dword ptr [esi + edi]
+inc  dword ptr [esi]
+inc  eax
+inc  ecx
+invd
+lahf
+lea  cx, [esi + edi]
+lea  cx, [esi]
+lea  ecx, [esi + edi]
+lea  ecx, [esi]
+lock adc  byte ptr [esi + edi], 0xa
+lock adc  byte ptr [esi + edi], cl
+lock adc  byte ptr [esi], 0xa
+lock adc  byte ptr [esi], cl
+lock adc  dword ptr [esi + edi], 0xa
+lock adc  dword ptr [esi + edi], ecx
+lock adc  dword ptr [esi], 0xa
+lock adc  dword ptr [esi], ecx
+lock add  byte ptr [esi + edi], 0xa
+lock add  byte ptr [esi + edi], cl
+lock add  byte ptr [esi], 0xa
+lock add  byte ptr [esi], cl
+lock add  dword ptr [esi + edi], 0xa
+lock add  dword ptr [esi + edi], ecx
+lock add  dword ptr [esi], 0xa
+lock add  dword ptr [esi], ecx
+lock and  byte ptr [esi + edi], 0xa
+lock and  byte ptr [esi + edi], cl
+lock and  byte ptr [esi], 0xa
+lock and  byte ptr [esi], cl
+lock and  dword ptr [esi + edi], 0xa
+lock and  dword ptr [esi + edi], ecx
+lock and  dword ptr [esi], 0xa
+lock and  dword ptr [esi], ecx
+lock btc  dword ptr [esi + edi], 0xa
+lock btc  dword ptr [esi + edi], ecx
+lock btc  dword ptr [esi], 0xa
+lock btc  dword ptr [esi], ecx
+lock btr  dword ptr [esi + edi], 0xa
+lock btr  dword ptr [esi + edi], ecx
+lock btr  dword ptr [esi], 0xa
+lock btr  dword ptr [esi], ecx
+lock bts  dword ptr [esi + edi], 0xa
+lock bts  dword ptr [esi + edi], ecx
+lock bts  dword ptr [esi], 0xa
+lock bts  dword ptr [esi], ecx
+lock cmpxchg  byte ptr [esi + edi], cl
+lock cmpxchg  byte ptr [esi], cl
+lock cmpxchg  dword ptr [esi + edi], ecx
+lock cmpxchg  dword ptr [esi], ecx
+lock cmpxchg8b  qword ptr [esi + edi]
+lock cmpxchg8b  qword ptr [esi]
+lock dec  byte ptr [esi + edi]
+lock dec  byte ptr [esi]
+lock dec  dword ptr [esi + edi]
+lock dec  dword ptr [esi]
+lock inc  byte ptr [esi + edi]
+lock inc  byte ptr [esi]
+lock inc  dword ptr [esi + edi]
+lock inc  dword ptr [esi]
+lock neg  byte ptr [esi + edi]
+lock neg  byte ptr [esi]
+lock neg  dword ptr [esi + edi]
+lock neg  dword ptr [esi]
+lock not  byte ptr [esi + edi]
+lock not  byte ptr [esi]
+lock not  dword ptr [esi + edi]
+lock not  dword ptr [esi]
+lock or  byte ptr [esi + edi], 0xa
+lock or  byte ptr [esi + edi], cl
+lock or  byte ptr [esi], 0xa
+lock or  byte ptr [esi], cl
+lock or  dword ptr [esi + edi], 0xa
+lock or  dword ptr [esi + edi], ecx
+lock or  dword ptr [esi], 0xa
+lock or  dword ptr [esi], ecx
+lock sbb  byte ptr [esi + edi], 0xa
+lock sbb  byte ptr [esi + edi], cl
+lock sbb  byte ptr [esi], 0xa
+lock sbb  byte ptr [esi], cl
+lock sbb  dword ptr [esi + edi], 0xa
+lock sbb  dword ptr [esi + edi], ecx
+lock sbb  dword ptr [esi], 0xa
+lock sbb  dword ptr [esi], ecx
+lock sub  byte ptr [esi + edi], 0xa
+lock sub  byte ptr [esi + edi], cl
+lock sub  byte ptr [esi], 0xa
+lock sub  byte ptr [esi], cl
+lock sub  dword ptr [esi + edi], 0xa
+lock sub  dword ptr [esi + edi], ecx
+lock sub  dword ptr [esi], 0xa
+lock sub  dword ptr [esi], ecx
+lock xadd  byte ptr [esi + edi], cl
+lock xadd  byte ptr [esi], cl
+lock xadd  dword ptr [esi + edi], ecx
+lock xadd  dword ptr [esi], ecx
+lock xchg  byte ptr [esi + edi], cl
+lock xchg  byte ptr [esi], cl
+lock xchg  dword ptr [esi + edi], ecx
+lock xchg  dword ptr [esi], ecx
+lock xor  byte ptr [esi + edi], 0xa
+lock xor  byte ptr [esi + edi], cl
+lock xor  byte ptr [esi], 0xa
+lock xor  byte ptr [esi], cl
+lock xor  dword ptr [esi + edi], 0xa
+lock xor  dword ptr [esi + edi], ecx
+lock xor  dword ptr [esi], 0xa
+lock xor  dword ptr [esi], ecx
+lzcnt  ecx, dword ptr [esi + edi]
+lzcnt  ecx, dword ptr [esi]
+lzcnt  ecx, edx
+mov  byte ptr [esi + edi], 0xa
+mov  byte ptr [esi + edi], cl
+mov  byte ptr [esi], 0xa
+mov  byte ptr [esi], cl
+mov  cl, 0xa
+mov  cl, byte ptr [esi + edi]
+mov  cl, byte ptr [esi]
+mov  cl, dl
+mov  cx, 0xa
+mov  cx, dx
+mov  cx, word ptr [esi + edi]
+mov  cx, word ptr [esi]
+mov  dword ptr [esi + edi], 0xa
+mov  dword ptr [esi + edi], ecx
+mov  dword ptr [esi], 0xa
+mov  dword ptr [esi], ecx
+mov  ecx, 0xa
+mov  ecx, dword ptr [esi + edi]
+mov  ecx, dword ptr [esi]
+mov  ecx, edx
+mov  word ptr [esi + edi], cx
+mov  word ptr [esi], cx
+movbe  cx, word ptr [esi + edi]
+movbe  cx, word ptr [esi]
+movbe  dword ptr [esi + edi], ecx
+movbe  dword ptr [esi], ecx
+movbe  ecx, dword ptr [esi + edi]
+movbe  ecx, dword ptr [esi]
+movbe  word ptr [esi + edi], cx
+movbe  word ptr [esi], cx
+movsx  cx, dl
+movsx  cx, byte ptr [esi + edi]
+movsx  cx, byte ptr [esi]
+movsx  ecx, dl
+movsx  ecx, byte ptr [esi + edi]
+movsx  ecx, byte ptr [esi]
+movsx  ecx, dx
+movsx  ecx, word ptr [esi + edi]
+movsx  ecx, word ptr [esi]
+movzx  cx, dl
+movzx  cx, byte ptr [esi + edi]
+movzx  cx, byte ptr [esi]
+movzx  ecx, dl
+movzx  ecx, byte ptr [esi + edi]
+movzx  ecx, byte ptr [esi]
+movzx  ecx, dx
+movzx  ecx, word ptr [esi + edi]
+movzx  ecx, word ptr [esi]
+mul  byte ptr [esi + edi]
+mul  byte ptr [esi]
+mul  cl
+mul  cx
+mul  dword ptr [esi + edi]
+mul  dword ptr [esi]
+mul  ecx
+neg  byte ptr [esi + edi]
+neg  byte ptr [esi]
+neg  cl
+neg  cx
+neg  dword ptr [esi + edi]
+neg  dword ptr [esi]
+neg  ecx
+nop
+nop  cx
+nop  cx, dx
+nop  dword ptr [eax + eax]
+nop  dword ptr [eax]
+nop  dword ptr [esi + edi]
+nop  dword ptr [esi]
+nop  ecx
+nop  ecx, edx
+nop  word ptr [eax + eax]
+nop  word ptr [esi + edi]
+nop  word ptr [esi]
+not  byte ptr [esi + edi]
+not  byte ptr [esi]
+not  cl
+not  cx
+not  dword ptr [esi + edi]
+not  dword ptr [esi]
+not  ecx
+or  byte ptr [esi + edi], 0xa
+or  byte ptr [esi + edi], cl
+or  byte ptr [esi], 0xa
+or  byte ptr [esi], cl
+or  cl, 0xa
+or  cl, byte ptr [esi + edi]
+or  cl, byte ptr [esi]
+or  cl, dl
+or  cx, 0xa
+or  cx, dx
+or  cx, word ptr [esi + edi]
+or  cx, word ptr [esi]
+or  dword ptr [esi + edi], 0xa
+or  dword ptr [esi + edi], ecx
+or  dword ptr [esi], 0xa
+or  dword ptr [esi], ecx
+or  ecx, 0xa
+or  ecx, dword ptr [esi + edi]
+or  ecx, dword ptr [esi]
+or  ecx, edx
+or  word ptr [esi + edi], cx
+or  word ptr [esi], cx
+pause
+popcnt  ecx, dword ptr [esi + edi]
+popcnt  ecx, dword ptr [esi]
+popcnt  ecx, edx
+rcl  byte ptr [esi + edi], 0xa
+rcl  byte ptr [esi + edi], 1
+rcl  byte ptr [esi + edi], cl
+rcl  byte ptr [esi], 0xa
+rcl  byte ptr [esi], 1
+rcl  byte ptr [esi], cl
+rcl  cl, 0xa
+rcl  cl, 1
+rcl  cx, 0xa
+rcl  cx, 1
+rcl  dword ptr [esi + edi], 0xa
+rcl  dword ptr [esi + edi], 1
+rcl  dword ptr [esi + edi], cl
+rcl  dword ptr [esi], 0xa
+rcl  dword ptr [esi], 1
+rcl  dword ptr [esi], cl
+rcl  ecx, 0xa
+rcl  ecx, 1
+rcr  byte ptr [esi + edi], 0xa
+rcr  byte ptr [esi + edi], 1
+rcr  byte ptr [esi + edi], cl
+rcr  byte ptr [esi], 0xa
+rcr  byte ptr [esi], 1
+rcr  byte ptr [esi], cl
+rcr  cl, 0xa
+rcr  cl, 1
+rcr  cx, 0xa
+rcr  cx, 1
+rcr  dword ptr [esi + edi], 0xa
+rcr  dword ptr [esi + edi], 1
+rcr  dword ptr [esi + edi], cl
+rcr  dword ptr [esi], 0xa
+rcr  dword ptr [esi], 1
+rcr  dword ptr [esi], cl
+rcr  ecx, 0xa
+rcr  ecx, 1
+rdpid ecx
+rdpmc
+rdrand  cx
+rdrand  ecx
+rdseed  cx
+rdseed  ecx
+rdtsc
+rdtscp
+rol  byte ptr [esi + edi], 0xa
+rol  byte ptr [esi + edi], 1
+rol  byte ptr [esi + edi], cl
+rol  byte ptr [esi], 0xa
+rol  byte ptr [esi], 1
+rol  byte ptr [esi], cl
+rol  cl, 0xa
+rol  cl, 1
+rol  cx, 0xa
+rol  cx, 1
+rol  dword ptr [esi + edi], 0xa
+rol  dword ptr [esi + edi], 1
+rol  dword ptr [esi + edi], cl
+rol  dword ptr [esi], 0xa
+rol  dword ptr [esi], 1
+rol  dword ptr [esi], cl
+rol  ecx, 0xa
+rol  ecx, 1
+ror  byte ptr [esi + edi], 0xa
+ror  byte ptr [esi + edi], 1
+ror  byte ptr [esi + edi], cl
+ror  byte ptr [esi], 0xa
+ror  byte ptr [esi], 1
+ror  byte ptr [esi], cl
+ror  cl, 0xa
+ror  cl, 1
+ror  cx, 0xa
+ror  cx, 1
+ror  dword ptr [esi + edi], 0xa
+ror  dword ptr [esi + edi], 1
+ror  dword ptr [esi + edi], cl
+ror  dword ptr [esi], 0xa
+ror  dword ptr [esi], 1
+ror  dword ptr [esi], cl
+ror  ecx, 0xa
+ror  ecx, 1
+sal  byte ptr [esi + edi], 0xa
+sal  byte ptr [esi + edi], 1
+sal  byte ptr [esi + edi], cl
+sal  byte ptr [esi], 0xa
+sal  byte ptr [esi], 1
+sal  byte ptr [esi], cl
+sal  cl, 0xa
+sal  cl, 1
+sal  cx, 0xa
+sal  cx, 1
+sal  dword ptr [esi + edi], 0xa
+sal  dword ptr [esi + edi], 1
+sal  dword ptr [esi + edi], cl
+sal  dword ptr [esi], 0xa
+sal  dword ptr [esi], 1
+sal  dword ptr [esi], cl
+sal  ecx, 0xa
+sal  ecx, 1
+salc
+sar  byte ptr [esi + edi], 0xa
+sar  byte ptr [esi + edi], 1
+sar  byte ptr [esi + edi], cl
+sar  byte ptr [esi], 0xa
+sar  byte ptr [esi], 1
+sar  byte ptr [esi], cl
+sar  cl, 0xa
+sar  cl, 1
+sar  cx, 0xa
+sar  cx, 1
+sar  dword ptr [esi + edi], 0xa
+sar  dword ptr [esi + edi], 1
+sar  dword ptr [esi + edi], cl
+sar  dword ptr [esi], 0xa
+sar  dword ptr [esi], 1
+sar  dword ptr [esi], cl
+sar  ecx, 0xa
+sar  ecx, 1
+sbb  byte ptr [esi + edi], 0xa
+sbb  byte ptr [esi + edi], cl
+sbb  byte ptr [esi], 0xa
+sbb  byte ptr [esi], cl
+sbb  cl, 0xa
+sbb  cl, byte ptr [esi + edi]
+sbb  cl, byte ptr [esi]
+sbb  cl, dl
+sbb  cx, 0xa
+sbb  cx, dx
+sbb  cx, word ptr [esi + edi]
+sbb  cx, word ptr [esi]
+sbb  dword ptr [esi + edi], 0xa
+sbb  dword ptr [esi + edi], ecx
+sbb  dword ptr [esi], 0xa
+sbb  dword ptr [esi], ecx
+sbb  ecx, 0xa
+sbb  ecx, dword ptr [esi + edi]
+sbb  ecx, dword ptr [esi]
+sbb  ecx, edx
+sbb  word ptr [esi + edi], cx
+sbb  word ptr [esi], cx
+seta  byte ptr [esi + edi]
+seta  byte ptr [esi]
+seta  cl
+setae  byte ptr [esi + edi]
+setae  byte ptr [esi]
+setae  cl
+setb  byte ptr [esi + edi]
+setb  byte ptr [esi]
+setb  cl
+setbe  byte ptr [esi + edi]
+setbe  byte ptr [esi]
+setbe  cl
+sete  byte ptr [esi + edi]
+sete  byte ptr [esi]
+sete  cl
+setg  byte ptr [esi + edi]
+setg  byte ptr [esi]
+setg  cl
+setge  byte ptr [esi + edi]
+setge  byte ptr [esi]
+setge  cl
+setl  byte ptr [esi + edi]
+setl  byte ptr [esi]
+setl  cl
+setle  byte ptr [esi + edi]
+setle  byte ptr [esi]
+setle  cl
+setne  byte ptr [esi + edi]
+setne  byte ptr [esi]
+setne  cl
+setno  byte ptr [esi + edi]
+setno  byte ptr [esi]
+setno  cl
+setnp  byte ptr [esi + edi]
+setnp  byte ptr [esi]
+setnp  cl
+setns  byte ptr [esi + edi]
+setns  byte ptr [esi]
+setns  cl
+seto  byte ptr [esi + edi]
+seto  byte ptr [esi]
+seto  cl
+setp  byte ptr [esi + edi]
+setp  byte ptr [esi]
+setp  cl
+sets  byte ptr [esi + edi]
+sets  byte ptr [esi]
+sets  cl
+sgdt  [esi + edi]
+sgdt  [esi]
+shl  byte ptr [esi + edi], 0xa
+shl  byte ptr [esi + edi], 1
+shl  byte ptr [esi + edi], cl
+shl  byte ptr [esi], 0xa
+shl  byte ptr [esi], 1
+shl  byte ptr [esi], cl
+shl  cl, 0xa
+shl  cl, 1
+shl  cx, 0xa
+shl  cx, 1
+shl  dword ptr [esi + edi], 0xa
+shl  dword ptr [esi + edi], 1
+shl  dword ptr [esi + edi], cl
+shl  dword ptr [esi], 0xa
+shl  dword ptr [esi], 1
+shl  dword ptr [esi], cl
+shl  ecx, 0xa
+shl  ecx, 1
+shld  cx, dx, 0xa
+shld  cx, dx, cl
+shld  dword ptr [esi + edi], ecx, 0xa
+shld  dword ptr [esi], ecx, 0xa
+shld  ecx, edx, 0xa
+shld  ecx, edx, cl
+shld  word ptr [esi + edi], cx, 0xa
+shld  word ptr [esi], cx, 0xa
+shr  byte ptr [esi + edi], 0xa
+shr  byte ptr [esi + edi], 1
+shr  byte ptr [esi + edi], cl
+shr  byte ptr [esi], 0xa
+shr  byte ptr [esi], 1
+shr  byte ptr [esi], cl
+shr  cl, 0xa
+shr  cl, 1
+shr  cx, 0xa
+shr  cx, 1
+shr  dword ptr [esi + edi], 0xa
+shr  dword ptr [esi + edi], 1
+shr  dword ptr [esi + edi], cl
+shr  dword ptr [esi], 0xa
+shr  dword ptr [esi], 1
+shr  dword ptr [esi], cl
+shr  ecx, 0xa
+shr  ecx, 1
+shrd  cx, dx, 0xa
+shrd  cx, dx, cl
+shrd  dword ptr [esi + edi], ecx, 0xa
+shrd  dword ptr [esi], ecx, 0xa
+shrd  ecx, edx, 0xa
+shrd  ecx, edx, cl
+shrd  word ptr [esi + edi], cx, 0xa
+shrd  word ptr [esi], cx, 0xa
+sidt  [esi + edi]
+sidt  [esi]
+sldt  cx
+sldt  ecx
+sldt  word ptr [esi + edi]
+sldt  word ptr [esi]
+smsw  cx
+smsw  ecx
+smsw  word ptr [esi + edi]
+smsw  word ptr [esi]
+str  cx
+str  ecx
+str  word ptr [esi + edi]
+str  word ptr [esi]
+sub  byte ptr [esi + edi], 0xa
+sub  byte ptr [esi + edi], cl
+sub  byte ptr [esi], 0xa
+sub  byte ptr [esi], cl
+sub  cl, 0xa
+sub  cl, byte ptr [esi + edi]
+sub  cl, byte ptr [esi]
+sub  cl, dl
+sub  cx, 0xa
+sub  cx, dx
+sub  cx, word ptr [esi + edi]
+sub  cx, word ptr [esi]
+sub  dword ptr [esi + edi], 0xa
+sub  dword ptr [esi + edi], ecx
+sub  dword ptr [esi], 0xa
+sub  dword ptr [esi], ecx
+sub  ecx, 0xa
+sub  ecx, dword ptr [esi + edi]
+sub  ecx, dword ptr [esi]
+sub  ecx, edx
+sub  word ptr [esi + edi], cx
+sub  word ptr [esi], cx
+test  byte ptr [esi + edi], 0xa
+test  byte ptr [esi + edi], cl
+test  byte ptr [esi], 0xa
+test  byte ptr [esi], cl
+test  cl, 0xa
+test  cl, dl
+test  cx, 0xa
+test  cx, dx
+test  dword ptr [esi + edi], 0xa
+test  dword ptr [esi + edi], ecx
+test  dword ptr [esi], 0xa
+test  dword ptr [esi], ecx
+test  ecx, 0xa
+test  ecx, edx
+test  word ptr [esi + edi], cx
+test  word ptr [esi], cx
+tzcnt  ecx, dword ptr [esi + edi]
+tzcnt  ecx, dword ptr [esi]
+tzcnt  ecx, edx
+ud0
+ud2
+ud2b
+verr  cx
+verr  word ptr [esi + edi]
+verr  word ptr [esi]
+verw  cx
+verw  word ptr [esi + edi]
+verw  word ptr [esi]
+wbinvd
+xadd  byte ptr [esi + edi], cl
+xadd  byte ptr [esi], cl
+xadd  cl, dl
+xadd  cx, dx
+xadd  dword ptr [esi + edi], ecx
+xadd  dword ptr [esi], ecx
+xadd  ecx, edx
+xadd  word ptr [esi + edi], cx
+xadd  word ptr [esi], cx
+xchg  byte ptr [esi + edi], cl
+xchg  byte ptr [esi], cl
+xchg  cl, dl
+xchg  cx, dx
+xchg  dword ptr [esi + edi], ecx
+xchg  dword ptr [esi], ecx
+xchg  ecx, edx
+xchg  word ptr [esi + edi], cx
+xchg  word ptr [esi], cx
+xor  byte ptr [esi + edi], 0xa
+xor  byte ptr [esi + edi], cl
+xor  byte ptr [esi], 0xa
+xor  byte ptr [esi], cl
+xor  cl, 0xa
+xor  cl, byte ptr [esi + edi]
+xor  cl, byte ptr [esi]
+xor  cl, dl
+xor  cx, 0xa
+xor  cx, dx
+xor  cx, word ptr [esi + edi]
+xor  cx, word ptr [esi]
+xor  dword ptr [esi + edi], 0xa
+xor  dword ptr [esi + edi], ecx
+xor  dword ptr [esi], 0xa
+xor  dword ptr [esi], ecx
+xor  ecx, 0xa
+xor  ecx, dword ptr [esi + edi]
+xor  ecx, dword ptr [esi]
+xor  ecx, edx
+xor  word ptr [esi + edi], cx
+xor  word ptr [esi], cx

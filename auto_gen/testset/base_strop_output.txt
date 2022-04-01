@@ -1,0 +1,63 @@
+cmpsb  byte ptr [esi], byte ptr es:[edi]
+cmpsd  [edi], es:[esi]
+cmpsw  word ptr [esi], word ptr es:[edi]
+insb  byte ptr es:[edi], dx
+insd  dword ptr es:[edi], dx
+insw  word ptr es:[edi], dx
+lodsb  al, byte ptr [esi]
+lodsd  eax, dword ptr [esi]
+lodsw  ax, word ptr [esi]
+movsb  byte ptr es:[edi], byte ptr [esi]
+movsb  byte ptr es:[edi], byte ptr cs:[esi]
+movsb  byte ptr es:[edi], byte ptr es:[esi]
+movsb  byte ptr es:[edi], byte ptr fs:[esi]
+movsb  byte ptr es:[edi], byte ptr gs:[esi]
+movsb  byte ptr es:[edi], byte ptr ss:[esi]
+movsd  es:[edi], [esi]
+movsd  es:[edi], cs:[esi]
+movsd  es:[edi], es:[esi]
+movsd  es:[edi], fs:[esi]
+movsd  es:[edi], gs:[esi]
+movsd  es:[edi], ss:[esi]
+movsw  word ptr es:[edi], word ptr [esi]
+movsw  word ptr es:[edi], word ptr cs:[esi]
+movsw  word ptr es:[edi], word ptr es:[esi]
+movsw  word ptr es:[edi], word ptr fs:[esi]
+movsw  word ptr es:[edi], word ptr gs:[esi]
+movsw  word ptr es:[edi], word ptr ss:[esi]
+rep lodsb  al, byte ptr [esi]
+rep lodsd  eax, dword ptr [esi]
+rep lodsw  ax, word ptr [esi]
+rep movsb  byte ptr es:[edi], byte ptr [esi]
+rep movsd  es:[edi], [esi]
+rep movsw  word ptr es:[edi], word ptr [esi]
+rep stosb  byte ptr es:[edi], al
+rep stosd  dword ptr es:[edi], eax
+rep stosw  word ptr es:[edi], ax
+repe cmpsb  byte ptr [esi], byte ptr es:[edi]
+repe cmpsd  [edi], es:[esi]
+repe cmpsw  word ptr [esi], word ptr es:[edi]
+repe scasb  al, byte ptr es:[edi]
+repe scasd  eax, dword ptr es:[edi]
+repe scasw  ax, word ptr es:[edi]
+repne cmpsb  byte ptr [esi], byte ptr es:[edi]
+repne cmpsd  [edi], es:[esi]
+repne cmpsw  word ptr [esi], word ptr es:[edi]
+repne lodsb  al, byte ptr [esi]
+repne lodsd  eax, dword ptr [esi]
+repne lodsw  ax, word ptr [esi]
+repne movsb  byte ptr es:[edi], byte ptr [esi]
+repne movsd  es:[edi], [esi]
+repne movsw  word ptr es:[edi], word ptr [esi]
+repne scasb  al, byte ptr es:[edi]
+repne scasd  eax, dword ptr es:[edi]
+repne scasw  ax, word ptr es:[edi]
+repne stosb  byte ptr es:[edi], al
+repne stosd  dword ptr es:[edi], eax
+repne stosw  word ptr es:[edi], ax
+scasb  al, byte ptr es:[edi]
+scasd  eax, dword ptr es:[edi]
+scasw  ax, word ptr es:[edi]
+stosb  byte ptr es:[edi], al
+stosd  dword ptr es:[edi], eax
+stosw  word ptr es:[edi], ax

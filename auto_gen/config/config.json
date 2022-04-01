@@ -1,0 +1,15 @@
+[
+    {
+        "vmp": "",
+        "testset": "",
+        "output_dir": "",
+        "c_template": "",
+        "makefile_template": "",
+        "testset_log_dir": "",
+        "testset_out_dir": "",
+        "anchor_log": "",
+        "anchor_out": "",
+        "logcmp_log":"",
+        "action": [""],
+    }
+]

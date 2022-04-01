@@ -1,0 +1,111 @@
+CC = gcc
+CFLAGS = -m32 -masm=intel
+INCLUDE_DIR = D:\Project\anti_vmp\InsGen\Enigma\Enigma_430\EnigmaSDK\VC
+LD_DIR = D:\Project\anti_vmp\InsGen\Enigma\Enigma_430\EnigmaSDK\VC
+LIB_NAME = enigma_ide
+
+# VMP_TMP = tmp.vmp
+VMP_CON = D:\Project\anti_vmp\InsGen\Enigma\Enigma_430\enigma32.exe
+PROJ = "D:\Project\anti_vmp\InsGen\Enigma\Enigma_430\v430.enigma"
+
+PIN_DLL = F:\anti_vmp\output\instracelog_anchorfinder.dll
+# PIN_DLL = Z:\data\anti_vmp\output\instracelog_anchorfinder.dll
+
+OBJ = $(wildcard *.c)
+#OBJ = mov1.c mov2.c
+EXE_TARGET = $(subst .c,.exe,$(OBJ))
+
+EXE_EXIST = $(wildcard *.exe)
+VMP_EXIST = $(wildcard *.eni.exe)
+EXE_TMP = $(filter-out $(VMP_EXIST),$(EXE_EXIST))
+VMP_TARGET_RAW = $(subst .exe,.eni.exe,$(EXE_TMP))
+VMP_TARGET1 = $(subst .exe,_1.eni.exe,$(EXE_TMP))
+VMP_TARGET2 = $(subst .exe,_2.eni.exe,$(EXE_TMP))
+VMP_TARGET3 = $(subst .exe,_3.eni.exe,$(EXE_TMP))
+
+TRACE_TARGET = $(subst .eni.exe,.log,$(VMP_EXIST))
+
+WordSubst = $(subst .eni.exe,.tmp,$1)
+
+
+all: exe vmp1 vmp2 vmp3 tmpclean pin
+
+.PHONY: exe
+exe: $(EXE_TARGET)
+
+.PHONY: vmp
+vmp: $(VMP_TARGET_RAW)
+
+.PHONY: vmp1
+vmp1: $(VMP_TARGET1)
+
+.PHONY: vmp2
+vmp2: $(VMP_TARGET2)
+
+.PHONY: vmp3
+vmp3: $(VMP_TARGET3)
+
+.PHONY: pin
+pin: $(TRACE_TARGET)
+
+.PHONY: clean
+clean:
+	echo "please use tmpclean / vmpclean / logclean / execlean / cclean"
+
+.PHONY: tmpclean
+tmpclean:
+	rm -f *.tmp
+
+.PHONY: vmpclean
+vmpclean:
+	rm -f *.eni.exe
+
+.PHONY: logclean
+logclean:
+	rm -f *.log
+
+.PHONY: execlean
+execlean:
+	rm -f *.exe
+
+.PHONY: cclean
+cclean:
+	rm -f *.c
+
+.PHONY: clear
+clear: tmpclean vmpclean logclean execlean cclean
+
+.PHONY: debug
+debug:
+
+
+
+%.log:%.eni.exe
+	pin -t $(PIN_DLL) -o $@ -i ..\anchor.txt -- $<
+
+%.eni.exe:%.exe
+	sed -e "s/%INPUTFILENAME%/$</" -e "s/%OUTPUTFILENAME%/$@/" $(PROJ) > $(call WordSubst, $@)
+	$(VMP_CON) -qe $(call WordSubst, $@)
+	$(warning VMP Compiling $< To $@)
+
+%_1.eni.exe:%.exe
+	sed -e "s/%INPUTFILENAME%/$</" -e "s/%OUTPUTFILENAME%/$@/" $(PROJ) > $(call WordSubst, $@)
+	$(VMP_CON) -qe $(call WordSubst, $@)
+	$(warning VMP Compiling $< To $@)
+
+%_2.eni.exe:%.exe
+	sed -e "s/%INPUTFILENAME%/$</" -e "s/%OUTPUTFILENAME%/$@/" $(PROJ) > $(call WordSubst, $@)
+	$(VMP_CON) -qe $(call WordSubst, $@)
+	$(warning VMP Compiling $< To $@)
+
+%_3.eni.exe:%.exe
+	sed -e "s/%INPUTFILENAME%/$</" -e "s/%OUTPUTFILENAME%/$@/" $(PROJ) > $(call WordSubst, $@)
+	$(VMP_CON) -qe $(call WordSubst, $@)
+	$(warning VMP Compiling $< To $@)
+
+%.exe:%.c
+	$(CC) $(CFLAGS) $< -o $@ -I$(INCLUDE_DIR) -L$(LD_DIR) -l$(LIB_NAME)
+	$(warning CC $< -o $@)
+
+%.log:%.eni.exe
+	pin -t $(PIN_DLL) -o $@ -i ..\anchor.txt -- $<

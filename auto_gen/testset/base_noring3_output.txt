@@ -1,0 +1,73 @@
+arpl  cx, dx
+arpl  word ptr [esi + edi], cx
+arpl  word ptr [esi], cx
+clac
+clgi
+cli
+clts
+enter  0xa, 0x14
+hlt
+int  0xa
+int1
+int3
+into
+invlpg  byte ptr [esi + edi]
+invlpg  byte ptr [esi]
+invpcid  ecx, xmmword ptr [esi + edi]
+invpcid  ecx, xmmword ptr [esi]
+lgdt  [esi + edi]
+lgdt  [esi]
+lidt  [esi + edi]
+lidt  [esi]
+lldt  cx
+lldt  word ptr [esi + edi]
+lldt  word ptr [esi]
+lmsw  cx
+lmsw  word ptr [esi + edi]
+lmsw  word ptr [esi]
+lss  cx, ptr [esi + edi]
+lss  cx, ptr [esi]
+lss  ecx, ptr [esi + edi]
+lss  ecx, ptr [esi]
+ltr  cx
+ltr  word ptr [esi + edi]
+ltr  word ptr [esi]
+outsb  dx, byte ptr [esi]
+outsd  dx, dword ptr [esi]
+outsw  dx, word ptr [esi]
+rdmsr
+rep insb  byte ptr es:[edi], dx
+rep insd  dword ptr es:[edi], dx
+rep insw  word ptr es:[edi], dx
+rep outsb  dx, byte ptr [esi]
+rep outsd  dx, dword ptr [esi]
+rep outsw  dx, word ptr [esi]
+repne insb  byte ptr es:[edi], dx
+repne insd  dword ptr es:[edi], dx
+repne insw  word ptr es:[edi], dx
+repne outsb  dx, byte ptr [esi]
+repne outsd  dx, dword ptr [esi]
+repne outsw  dx, word ptr [esi]
+rsm
+stgi
+sti
+syscall
+sysenter
+sysexit
+sysret
+vmmcall
+vmsave  eax
+wrmsr
+xrstor  ptr [esi + edi]
+xrstor  ptr [esi]
+xrstors  ptr [esi + edi]
+xrstors  ptr [esi]
+xsave  ptr [esi + edi]
+xsave  ptr [esi]
+xsavec  ptr [esi + edi]
+xsavec  ptr [esi]
+xsaveopt  ptr [esi + edi]
+xsaveopt  ptr [esi]
+xsaves  ptr [esi + edi]
+xsaves  ptr [esi]
+xsetbv

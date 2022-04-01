@@ -1,0 +1,508 @@
+addpd  xmm0, xmm1
+addpd  xmm0, xmmword ptr [esi + edi]
+addpd  xmm0, xmmword ptr [esi]
+addps  xmm0, xmm1
+addps  xmm0, xmmword ptr [esi + edi]
+addps  xmm0, xmmword ptr [esi]
+addsd  xmm0, qword ptr [esi + edi]
+addsd  xmm0, qword ptr [esi]
+addsd  xmm0, xmm1
+addss  xmm0, dword ptr [esi + edi]
+addss  xmm0, dword ptr [esi]
+addss  xmm0, xmm1
+andnpd  xmm0, xmm1
+andnpd  xmm0, xmmword ptr [esi + edi]
+andnpd  xmm0, xmmword ptr [esi]
+andnps  xmm0, xmm1
+andnps  xmm0, xmmword ptr [esi + edi]
+andnps  xmm0, xmmword ptr [esi]
+andpd  xmm0, xmm1
+andpd  xmm0, xmmword ptr [esi + edi]
+andpd  xmm0, xmmword ptr [esi]
+andps  xmm0, xmm1
+andps  xmm0, xmmword ptr [esi + edi]
+andps  xmm0, xmmword ptr [esi]
+cmppd  xmm0, xmm1, 0xa
+cmppd  xmm0, xmmword ptr [esi + edi], 0xa
+cmppd  xmm0, xmmword ptr [esi], 0xa
+cmpps  xmm0, xmm1, 0xa
+cmpps  xmm0, xmmword ptr [esi + edi], 0xa
+cmpps  xmm0, xmmword ptr [esi], 0xa
+cmpsd  xmm0, qword ptr [esi + edi], 0xa
+cmpsd  xmm0, qword ptr [esi], 0xa
+cmpsd  xmm0, xmm1, 0xa
+cmpss  xmm0, dword ptr [esi + edi], 0xa
+cmpss  xmm0, dword ptr [esi], 0xa
+cmpss  xmm0, xmm1, 0xa
+comisd  xmm0, xmm1
+comisd  xmm0, qword ptr [esi + edi]
+comisd  xmm0, qword ptr [esi]
+comiss  xmm0, xmm1
+comiss  xmm0, dword ptr [esi + edi]
+comiss  xmm0, dword ptr [esi]
+cvtdq2pd  xmm0, qword ptr [esi + edi]
+cvtdq2pd  xmm0, qword ptr [esi]
+cvtdq2pd  xmm0, xmm1
+cvtdq2ps  xmm0, xmm1
+cvtdq2ps  xmm0, xmmword ptr [esi + edi]
+cvtdq2ps  xmm0, xmmword ptr [esi]
+cvtpd2dq  xmm0, xmm1
+cvtpd2dq  xmm0, xmmword ptr [esi + edi]
+cvtpd2dq  xmm0, xmmword ptr [esi]
+cvtpd2ps  xmm0, xmm1
+cvtpd2ps  xmm0, xmmword ptr [esi + edi]
+cvtpd2ps  xmm0, xmmword ptr [esi]
+cvtpi2pd  xmm0, qword ptr [esi + edi]
+cvtpi2pd  xmm0, qword ptr [esi]
+cvtpi2ps  xmm0, qword ptr [esi + edi]
+cvtpi2ps  xmm0, qword ptr [esi]
+cvtps2dq  xmm0, xmm1
+cvtps2dq  xmm0, xmmword ptr [esi + edi]
+cvtps2dq  xmm0, xmmword ptr [esi]
+cvtps2pd  xmm0, qword ptr [esi + edi]
+cvtps2pd  xmm0, qword ptr [esi]
+cvtps2pd  xmm0, xmm1
+cvtsd2si  ecx, qword ptr [esi + edi]
+cvtsd2si  ecx, qword ptr [esi]
+cvtsd2si  ecx, xmm0
+cvtsd2ss  xmm0, qword ptr [esi + edi]
+cvtsd2ss  xmm0, qword ptr [esi]
+cvtsd2ss  xmm0, xmm1
+cvtsi2sd  xmm0, dword ptr [esi + edi]
+cvtsi2sd  xmm0, dword ptr [esi]
+cvtsi2sd  xmm0, ecx
+cvtsi2ss  xmm0, dword ptr [esi + edi]
+cvtsi2ss  xmm0, dword ptr [esi]
+cvtsi2ss  xmm0, ecx
+cvtss2sd  xmm0, dword ptr [esi + edi]
+cvtss2sd  xmm0, dword ptr [esi]
+cvtss2sd  xmm0, xmm1
+cvtss2si  ecx, dword ptr [esi + edi]
+cvtss2si  ecx, dword ptr [esi]
+cvtss2si  ecx, xmm0
+cvttpd2dq  xmm0, xmm1
+cvttpd2dq  xmm0, xmmword ptr [esi + edi]
+cvttpd2dq  xmm0, xmmword ptr [esi]
+cvttps2dq  xmm0, xmm1
+cvttps2dq  xmm0, xmmword ptr [esi + edi]
+cvttps2dq  xmm0, xmmword ptr [esi]
+cvttsd2si  ecx, qword ptr [esi + edi]
+cvttsd2si  ecx, qword ptr [esi]
+cvttsd2si  ecx, xmm0
+cvttss2si  ecx, dword ptr [esi + edi]
+cvttss2si  ecx, dword ptr [esi]
+cvttss2si  ecx, xmm0
+divpd  xmm0, xmm1
+divpd  xmm0, xmmword ptr [esi + edi]
+divpd  xmm0, xmmword ptr [esi]
+divps  xmm0, xmm1
+divps  xmm0, xmmword ptr [esi + edi]
+divps  xmm0, xmmword ptr [esi]
+divsd  xmm0, qword ptr [esi + edi]
+divsd  xmm0, qword ptr [esi]
+divsd  xmm0, xmm1
+divss  xmm0, dword ptr [esi + edi]
+divss  xmm0, dword ptr [esi]
+divss  xmm0, xmm1
+fxrstor  [esi + edi]
+fxrstor  [esi]
+fxsave  [esi + edi]
+fxsave  [esi]
+ldmxcsr  dword ptr [esi + edi]
+ldmxcsr  dword ptr [esi]
+lfence
+maskmovdqu  xmm0, xmm1
+maxpd  xmm0, xmm1
+maxpd  xmm0, xmmword ptr [esi + edi]
+maxpd  xmm0, xmmword ptr [esi]
+maxps  xmm0, xmm1
+maxps  xmm0, xmmword ptr [esi + edi]
+maxps  xmm0, xmmword ptr [esi]
+maxsd  xmm0, qword ptr [esi + edi]
+maxsd  xmm0, qword ptr [esi]
+maxsd  xmm0, xmm1
+maxss  xmm0, dword ptr [esi + edi]
+maxss  xmm0, dword ptr [esi]
+maxss  xmm0, xmm1
+mfence
+minpd  xmm0, xmm1
+minpd  xmm0, xmmword ptr [esi + edi]
+minpd  xmm0, xmmword ptr [esi]
+minps  xmm0, xmm1
+minps  xmm0, xmmword ptr [esi + edi]
+minps  xmm0, xmmword ptr [esi]
+minsd  xmm0, qword ptr [esi + edi]
+minsd  xmm0, qword ptr [esi]
+minsd  xmm0, xmm1
+minss  xmm0, dword ptr [esi + edi]
+minss  xmm0, dword ptr [esi]
+minss  xmm0, xmm1
+movapd  xmm0, xmm1
+movapd  xmm0, xmmword ptr [esi + edi]
+movapd  xmm0, xmmword ptr [esi]
+movapd  xmmword ptr [esi + edi], xmm0
+movapd  xmmword ptr [esi], xmm0
+movaps  xmm0, xmm1
+movaps  xmm0, xmmword ptr [esi + edi]
+movaps  xmm0, xmmword ptr [esi]
+movaps  xmmword ptr [esi + edi], xmm0
+movaps  xmmword ptr [esi], xmm0
+movd  dword ptr [esi + edi], xmm0
+movd  dword ptr [esi], xmm0
+movd  ecx, xmm0
+movd  xmm0, dword ptr [esi + edi]
+movd  xmm0, dword ptr [esi]
+movd  xmm0, ecx
+movdqa  xmm0, xmm1
+movdqa  xmm0, xmmword ptr [esi + edi]
+movdqa  xmm0, xmmword ptr [esi]
+movdqa  xmmword ptr [esi + edi], xmm0
+movdqa  xmmword ptr [esi], xmm0
+movdqu  xmm0, xmm1
+movdqu  xmm0, xmmword ptr [esi + edi]
+movdqu  xmm0, xmmword ptr [esi]
+movdqu  xmmword ptr [esi + edi], xmm0
+movdqu  xmmword ptr [esi], xmm0
+movhlps  xmm0, xmm1
+movhpd  qword ptr [esi + edi], xmm0
+movhpd  qword ptr [esi], xmm0
+movhpd  xmm0, qword ptr [esi + edi]
+movhpd  xmm0, qword ptr [esi]
+movhps  qword ptr [esi + edi], xmm0
+movhps  qword ptr [esi], xmm0
+movhps  xmm0, qword ptr [esi + edi]
+movhps  xmm0, qword ptr [esi]
+movlhps  xmm0, xmm1
+movlpd  qword ptr [esi + edi], xmm0
+movlpd  qword ptr [esi], xmm0
+movlpd  xmm0, qword ptr [esi + edi]
+movlpd  xmm0, qword ptr [esi]
+movlps  qword ptr [esi + edi], xmm0
+movlps  qword ptr [esi], xmm0
+movlps  xmm0, qword ptr [esi + edi]
+movlps  xmm0, qword ptr [esi]
+movmskpd  ecx, xmm0
+movmskps  ecx, xmm0
+movntdq  xmmword ptr [esi + edi], xmm0
+movntdq  xmmword ptr [esi], xmm0
+movnti  dword ptr [esi + edi], ecx
+movnti  dword ptr [esi], ecx
+movntpd  xmmword ptr [esi + edi], xmm0
+movntpd  xmmword ptr [esi], xmm0
+movntps  xmmword ptr [esi + edi], xmm0
+movntps  xmmword ptr [esi], xmm0
+movq  qword ptr [esi + edi], xmm0
+movq  qword ptr [esi], xmm0
+movq  xmm0, qword ptr [esi + edi]
+movq  xmm0, qword ptr [esi]
+movq  xmm0, xmm1
+movsd  qword ptr [esi + edi], xmm0
+movsd  qword ptr [esi], xmm0
+movsd  xmm0, qword ptr [esi + edi]
+movsd  xmm0, qword ptr [esi]
+movsd  xmm0, xmm1
+movss  dword ptr [esi + edi], xmm0
+movss  dword ptr [esi], xmm0
+movss  xmm0, dword ptr [esi + edi]
+movss  xmm0, dword ptr [esi]
+movss  xmm0, xmm1
+movupd  xmm0, xmm1
+movupd  xmm0, xmmword ptr [esi + edi]
+movupd  xmm0, xmmword ptr [esi]
+movupd  xmmword ptr [esi + edi], xmm0
+movupd  xmmword ptr [esi], xmm0
+movups  xmm0, xmm1
+movups  xmm0, xmmword ptr [esi + edi]
+movups  xmm0, xmmword ptr [esi]
+movups  xmmword ptr [esi + edi], xmm0
+movups  xmmword ptr [esi], xmm0
+mulpd  xmm0, xmm1
+mulpd  xmm0, xmmword ptr [esi + edi]
+mulpd  xmm0, xmmword ptr [esi]
+mulps  xmm0, xmm1
+mulps  xmm0, xmmword ptr [esi + edi]
+mulps  xmm0, xmmword ptr [esi]
+mulsd  xmm0, qword ptr [esi + edi]
+mulsd  xmm0, qword ptr [esi]
+mulsd  xmm0, xmm1
+mulss  xmm0, dword ptr [esi + edi]
+mulss  xmm0, dword ptr [esi]
+mulss  xmm0, xmm1
+orpd  xmm0, xmm1
+orpd  xmm0, xmmword ptr [esi + edi]
+orpd  xmm0, xmmword ptr [esi]
+orps  xmm0, xmm1
+orps  xmm0, xmmword ptr [esi + edi]
+orps  xmm0, xmmword ptr [esi]
+packssdw  xmm0, xmm1
+packssdw  xmm0, xmmword ptr [esi + edi]
+packssdw  xmm0, xmmword ptr [esi]
+packsswb  xmm0, xmm1
+packsswb  xmm0, xmmword ptr [esi + edi]
+packsswb  xmm0, xmmword ptr [esi]
+packuswb  xmm0, xmm1
+packuswb  xmm0, xmmword ptr [esi + edi]
+packuswb  xmm0, xmmword ptr [esi]
+paddb  xmm0, xmm1
+paddb  xmm0, xmmword ptr [esi + edi]
+paddb  xmm0, xmmword ptr [esi]
+paddd  xmm0, xmm1
+paddd  xmm0, xmmword ptr [esi + edi]
+paddd  xmm0, xmmword ptr [esi]
+paddq  xmm0, xmm1
+paddq  xmm0, xmmword ptr [esi + edi]
+paddq  xmm0, xmmword ptr [esi]
+paddsb  xmm0, xmm1
+paddsb  xmm0, xmmword ptr [esi + edi]
+paddsb  xmm0, xmmword ptr [esi]
+paddsw  xmm0, xmm1
+paddsw  xmm0, xmmword ptr [esi + edi]
+paddsw  xmm0, xmmword ptr [esi]
+paddusb  xmm0, xmm1
+paddusb  xmm0, xmmword ptr [esi + edi]
+paddusb  xmm0, xmmword ptr [esi]
+paddusw  xmm0, xmm1
+paddusw  xmm0, xmmword ptr [esi + edi]
+paddusw  xmm0, xmmword ptr [esi]
+paddw  xmm0, xmm1
+paddw  xmm0, xmmword ptr [esi + edi]
+paddw  xmm0, xmmword ptr [esi]
+pand  xmm0, xmm1
+pand  xmm0, xmmword ptr [esi + edi]
+pand  xmm0, xmmword ptr [esi]
+pandn  xmm0, xmm1
+pandn  xmm0, xmmword ptr [esi + edi]
+pandn  xmm0, xmmword ptr [esi]
+pavgb  xmm0, xmm1
+pavgb  xmm0, xmmword ptr [esi + edi]
+pavgb  xmm0, xmmword ptr [esi]
+pavgw  xmm0, xmm1
+pavgw  xmm0, xmmword ptr [esi + edi]
+pavgw  xmm0, xmmword ptr [esi]
+pcmpeqb  xmm0, xmm1
+pcmpeqb  xmm0, xmmword ptr [esi + edi]
+pcmpeqb  xmm0, xmmword ptr [esi]
+pcmpeqd  xmm0, xmm1
+pcmpeqd  xmm0, xmmword ptr [esi + edi]
+pcmpeqd  xmm0, xmmword ptr [esi]
+pcmpeqw  xmm0, xmm1
+pcmpeqw  xmm0, xmmword ptr [esi + edi]
+pcmpeqw  xmm0, xmmword ptr [esi]
+pcmpgtb  xmm0, xmm1
+pcmpgtb  xmm0, xmmword ptr [esi + edi]
+pcmpgtb  xmm0, xmmword ptr [esi]
+pcmpgtd  xmm0, xmm1
+pcmpgtd  xmm0, xmmword ptr [esi + edi]
+pcmpgtd  xmm0, xmmword ptr [esi]
+pcmpgtw  xmm0, xmm1
+pcmpgtw  xmm0, xmmword ptr [esi + edi]
+pcmpgtw  xmm0, xmmword ptr [esi]
+pextrw  ecx, xmm0, 0xa
+pinsrw  xmm0, ecx, 0xa
+pinsrw  xmm0, word ptr [esi + edi], 0xa
+pinsrw  xmm0, word ptr [esi], 0xa
+pmaddwd  xmm0, xmm1
+pmaddwd  xmm0, xmmword ptr [esi + edi]
+pmaddwd  xmm0, xmmword ptr [esi]
+pmaxsw  xmm0, xmm1
+pmaxsw  xmm0, xmmword ptr [esi + edi]
+pmaxsw  xmm0, xmmword ptr [esi]
+pmaxub  xmm0, xmm1
+pmaxub  xmm0, xmmword ptr [esi + edi]
+pmaxub  xmm0, xmmword ptr [esi]
+pminsw  xmm0, xmm1
+pminsw  xmm0, xmmword ptr [esi + edi]
+pminsw  xmm0, xmmword ptr [esi]
+pminub  xmm0, xmm1
+pminub  xmm0, xmmword ptr [esi + edi]
+pminub  xmm0, xmmword ptr [esi]
+pmovmskb  ecx, xmm0
+pmulhuw  xmm0, xmm1
+pmulhuw  xmm0, xmmword ptr [esi + edi]
+pmulhuw  xmm0, xmmword ptr [esi]
+pmulhw  xmm0, xmm1
+pmulhw  xmm0, xmmword ptr [esi + edi]
+pmulhw  xmm0, xmmword ptr [esi]
+pmullw  xmm0, xmm1
+pmullw  xmm0, xmmword ptr [esi + edi]
+pmullw  xmm0, xmmword ptr [esi]
+pmuludq  xmm0, xmm1
+pmuludq  xmm0, xmmword ptr [esi + edi]
+pmuludq  xmm0, xmmword ptr [esi]
+por  xmm0, xmm1
+por  xmm0, xmmword ptr [esi + edi]
+por  xmm0, xmmword ptr [esi]
+prefetchnta  byte ptr [esi + edi]
+prefetchnta  byte ptr [esi]
+prefetcht0  byte ptr [esi + edi]
+prefetcht0  byte ptr [esi]
+prefetcht1  byte ptr [esi + edi]
+prefetcht1  byte ptr [esi]
+prefetcht2  byte ptr [esi + edi]
+prefetcht2  byte ptr [esi]
+psadbw  xmm0, xmm1
+psadbw  xmm0, xmmword ptr [esi + edi]
+psadbw  xmm0, xmmword ptr [esi]
+pshufd  xmm0, xmm1, 0xa
+pshufd  xmm0, xmmword ptr [esi + edi], 0xa
+pshufd  xmm0, xmmword ptr [esi], 0xa
+pshufhw  xmm0, xmm1, 0xa
+pshufhw  xmm0, xmmword ptr [esi + edi], 0xa
+pshufhw  xmm0, xmmword ptr [esi], 0xa
+pshuflw  xmm0, xmm1, 0xa
+pshuflw  xmm0, xmmword ptr [esi + edi], 0xa
+pshuflw  xmm0, xmmword ptr [esi], 0xa
+pslld  xmm0, 0xa
+pslld  xmm0, xmm1
+pslld  xmm0, xmmword ptr [esi + edi]
+pslld  xmm0, xmmword ptr [esi]
+pslldq  xmm0, 0xa
+psllq  xmm0, 0xa
+psllq  xmm0, xmm1
+psllq  xmm0, xmmword ptr [esi + edi]
+psllq  xmm0, xmmword ptr [esi]
+psllw  xmm0, 0xa
+psllw  xmm0, xmm1
+psllw  xmm0, xmmword ptr [esi + edi]
+psllw  xmm0, xmmword ptr [esi]
+psrad  xmm0, 0xa
+psrad  xmm0, xmm1
+psrad  xmm0, xmmword ptr [esi + edi]
+psrad  xmm0, xmmword ptr [esi]
+psraw  xmm0, 0xa
+psraw  xmm0, xmm1
+psraw  xmm0, xmmword ptr [esi + edi]
+psraw  xmm0, xmmword ptr [esi]
+psrld  xmm0, 0xa
+psrld  xmm0, xmm1
+psrld  xmm0, xmmword ptr [esi + edi]
+psrld  xmm0, xmmword ptr [esi]
+psrldq  xmm0, 0xa
+psrlq  xmm0, 0xa
+psrlq  xmm0, xmm1
+psrlq  xmm0, xmmword ptr [esi + edi]
+psrlq  xmm0, xmmword ptr [esi]
+psrlw  xmm0, 0xa
+psrlw  xmm0, xmm1
+psrlw  xmm0, xmmword ptr [esi + edi]
+psrlw  xmm0, xmmword ptr [esi]
+psubb  xmm0, xmm1
+psubb  xmm0, xmmword ptr [esi + edi]
+psubb  xmm0, xmmword ptr [esi]
+psubd  xmm0, xmm1
+psubd  xmm0, xmmword ptr [esi + edi]
+psubd  xmm0, xmmword ptr [esi]
+psubq  xmm0, xmm1
+psubq  xmm0, xmmword ptr [esi + edi]
+psubq  xmm0, xmmword ptr [esi]
+psubsb  xmm0, xmm1
+psubsb  xmm0, xmmword ptr [esi + edi]
+psubsb  xmm0, xmmword ptr [esi]
+psubsw  xmm0, xmm1
+psubsw  xmm0, xmmword ptr [esi + edi]
+psubsw  xmm0, xmmword ptr [esi]
+psubusb  xmm0, xmm1
+psubusb  xmm0, xmmword ptr [esi + edi]
+psubusb  xmm0, xmmword ptr [esi]
+psubusw  xmm0, xmm1
+psubusw  xmm0, xmmword ptr [esi + edi]
+psubusw  xmm0, xmmword ptr [esi]
+psubw  xmm0, xmm1
+psubw  xmm0, xmmword ptr [esi + edi]
+psubw  xmm0, xmmword ptr [esi]
+punpckhbw  xmm0, xmm1
+punpckhbw  xmm0, xmmword ptr [esi + edi]
+punpckhbw  xmm0, xmmword ptr [esi]
+punpckhdq  xmm0, xmm1
+punpckhdq  xmm0, xmmword ptr [esi + edi]
+punpckhdq  xmm0, xmmword ptr [esi]
+punpckhqdq  xmm0, xmm1
+punpckhqdq  xmm0, xmmword ptr [esi + edi]
+punpckhqdq  xmm0, xmmword ptr [esi]
+punpckhwd  xmm0, xmm1
+punpckhwd  xmm0, xmmword ptr [esi + edi]
+punpckhwd  xmm0, xmmword ptr [esi]
+punpcklbw  xmm0, xmm1
+punpcklbw  xmm0, xmmword ptr [esi + edi]
+punpcklbw  xmm0, xmmword ptr [esi]
+punpckldq  xmm0, xmm1
+punpckldq  xmm0, xmmword ptr [esi + edi]
+punpckldq  xmm0, xmmword ptr [esi]
+punpcklqdq  xmm0, xmm1
+punpcklqdq  xmm0, xmmword ptr [esi + edi]
+punpcklqdq  xmm0, xmmword ptr [esi]
+punpcklwd  xmm0, xmm1
+punpcklwd  xmm0, xmmword ptr [esi + edi]
+punpcklwd  xmm0, xmmword ptr [esi]
+pxor  xmm0, xmm1
+pxor  xmm0, xmmword ptr [esi + edi]
+pxor  xmm0, xmmword ptr [esi]
+rcpps  xmm0, xmm1
+rcpps  xmm0, xmmword ptr [esi + edi]
+rcpps  xmm0, xmmword ptr [esi]
+rcpss  xmm0, dword ptr [esi + edi]
+rcpss  xmm0, dword ptr [esi]
+rcpss  xmm0, xmm1
+rsqrtps  xmm0, xmm1
+rsqrtps  xmm0, xmmword ptr [esi + edi]
+rsqrtps  xmm0, xmmword ptr [esi]
+rsqrtss  xmm0, dword ptr [esi + edi]
+rsqrtss  xmm0, dword ptr [esi]
+rsqrtss  xmm0, xmm1
+sfence
+shufpd  xmm0, xmm1, 0xa
+shufpd  xmm0, xmmword ptr [esi + edi], 0xa
+shufpd  xmm0, xmmword ptr [esi], 0xa
+shufps  xmm0, xmm1, 0xa
+shufps  xmm0, xmmword ptr [esi + edi], 0xa
+shufps  xmm0, xmmword ptr [esi], 0xa
+sqrtpd  xmm0, xmm1
+sqrtpd  xmm0, xmmword ptr [esi + edi]
+sqrtpd  xmm0, xmmword ptr [esi]
+sqrtps  xmm0, xmm1
+sqrtps  xmm0, xmmword ptr [esi + edi]
+sqrtps  xmm0, xmmword ptr [esi]
+sqrtsd  xmm0, qword ptr [esi + edi]
+sqrtsd  xmm0, qword ptr [esi]
+sqrtsd  xmm0, xmm1
+sqrtss  xmm0, dword ptr [esi + edi]
+sqrtss  xmm0, dword ptr [esi]
+sqrtss  xmm0, xmm1
+stmxcsr  dword ptr [esi + edi]
+stmxcsr  dword ptr [esi]
+subpd  xmm0, xmm1
+subpd  xmm0, xmmword ptr [esi + edi]
+subpd  xmm0, xmmword ptr [esi]
+subps  xmm0, xmm1
+subps  xmm0, xmmword ptr [esi + edi]
+subps  xmm0, xmmword ptr [esi]
+subsd  xmm0, qword ptr [esi + edi]
+subsd  xmm0, qword ptr [esi]
+subsd  xmm0, xmm1
+subss  xmm0, dword ptr [esi + edi]
+subss  xmm0, dword ptr [esi]
+subss  xmm0, xmm1
+ucomisd  xmm0, qword ptr [esi + edi]
+ucomisd  xmm0, qword ptr [esi]
+ucomisd  xmm0, xmm1
+ucomiss  xmm0, dword ptr [esi + edi]
+ucomiss  xmm0, dword ptr [esi]
+ucomiss  xmm0, xmm1
+unpckhpd  xmm0, xmm1
+unpckhpd  xmm0, xmmword ptr [esi + edi]
+unpckhpd  xmm0, xmmword ptr [esi]
+unpckhps  xmm0, xmm1
+unpckhps  xmm0, xmmword ptr [esi + edi]
+unpckhps  xmm0, xmmword ptr [esi]
+unpcklpd  xmm0, xmm1
+unpcklpd  xmm0, xmmword ptr [esi + edi]
+unpcklpd  xmm0, xmmword ptr [esi]
+unpcklps  xmm0, xmm1
+unpcklps  xmm0, xmmword ptr [esi + edi]
+unpcklps  xmm0, xmmword ptr [esi]
+xorpd  xmm0, xmm1
+xorpd  xmm0, xmmword ptr [esi + edi]
+xorpd  xmm0, xmmword ptr [esi]
+xorps  xmm0, xmm1
+xorps  xmm0, xmmword ptr [esi + edi]
+xorps  xmm0, xmmword ptr [esi]

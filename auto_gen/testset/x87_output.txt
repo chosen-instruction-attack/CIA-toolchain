@@ -1,0 +1,193 @@
+f2xm1
+fabs
+fadd  dword ptr [esi + edi]
+fadd  dword ptr [esi]
+fadd  qword ptr [esi + edi]
+fadd  qword ptr [esi]
+fadd  st(0)
+fadd  st(0), st(0)
+faddp  st(0)
+fbld  tbyte ptr [esi + edi]
+fbld  tbyte ptr [esi]
+fbstp  tbyte ptr [esi + edi]
+fbstp  tbyte ptr [esi]
+fchs
+fcmovb  st(0), st(0)
+fcmovbe  st(0), st(0)
+fcmove  st(0), st(0)
+fcmovnb  st(0), st(0)
+fcmovnbe  st(0), st(0)
+fcmovne  st(0), st(0)
+fcmovnu  st(0), st(0)
+fcmovu  st(0), st(0)
+fcom  dword ptr [esi + edi]
+fcom  dword ptr [esi]
+fcom  qword ptr [esi + edi]
+fcom  qword ptr [esi]
+fcom  st(0)
+fcomi  st(0)
+fcomip  st(0)
+fcomp  dword ptr [esi + edi]
+fcomp  dword ptr [esi]
+fcomp  qword ptr [esi + edi]
+fcomp  qword ptr [esi]
+fcomp  st(0)
+fcompp
+fcos
+fdecstp
+fdiv  dword ptr [esi + edi]
+fdiv  dword ptr [esi]
+fdiv  qword ptr [esi + edi]
+fdiv  qword ptr [esi]
+fdiv  st(0)
+fdiv  st(0), st(0)
+fdivp  st(0)
+fdivr  dword ptr [esi + edi]
+fdivr  dword ptr [esi]
+fdivr  qword ptr [esi + edi]
+fdivr  qword ptr [esi]
+fdivr  st(0)
+fdivr  st(0), st(0)
+fdivrp  st(0)
+ffree  st(0)
+ffreep  st(0)
+fiadd  dword ptr [esi + edi]
+fiadd  dword ptr [esi]
+fiadd  word ptr [esi + edi]
+fiadd  word ptr [esi]
+ficom  dword ptr [esi + edi]
+ficom  dword ptr [esi]
+ficom  word ptr [esi + edi]
+ficom  word ptr [esi]
+ficomp  dword ptr [esi + edi]
+ficomp  dword ptr [esi]
+ficomp  word ptr [esi + edi]
+ficomp  word ptr [esi]
+fidiv  dword ptr [esi + edi]
+fidiv  dword ptr [esi]
+fidiv  word ptr [esi + edi]
+fidiv  word ptr [esi]
+fidivr  dword ptr [esi + edi]
+fidivr  dword ptr [esi]
+fidivr  word ptr [esi + edi]
+fidivr  word ptr [esi]
+fild  dword ptr [esi + edi]
+fild  dword ptr [esi]
+fild  qword ptr [esi + edi]
+fild  qword ptr [esi]
+fild  word ptr [esi + edi]
+fild  word ptr [esi]
+fimul  dword ptr [esi + edi]
+fimul  dword ptr [esi]
+fimul  word ptr [esi + edi]
+fimul  word ptr [esi]
+fincstp
+fist  dword ptr [esi + edi]
+fist  dword ptr [esi]
+fist  word ptr [esi + edi]
+fist  word ptr [esi]
+fistp  dword ptr [esi + edi]
+fistp  dword ptr [esi]
+fistp  qword ptr [esi + edi]
+fistp  qword ptr [esi]
+fistp  word ptr [esi + edi]
+fistp  word ptr [esi]
+fisub  dword ptr [esi + edi]
+fisub  dword ptr [esi]
+fisub  word ptr [esi + edi]
+fisub  word ptr [esi]
+fisubr  dword ptr [esi + edi]
+fisubr  dword ptr [esi]
+fisubr  word ptr [esi + edi]
+fisubr  word ptr [esi]
+fld  dword ptr [esi + edi]
+fld  dword ptr [esi]
+fld  qword ptr [esi + edi]
+fld  qword ptr [esi]
+fld  tbyte ptr [esi + edi]
+fld  tbyte ptr [esi]
+fld  st(0)
+fld1
+fldcw  word ptr [esi + edi]
+fldcw  word ptr [esi]
+fldenv  [esi + edi]
+fldenv  [esi]
+fldl2e
+fldl2t
+fldlg2
+fldln2
+fldpi
+fldz
+fmul  dword ptr [esi + edi]
+fmul  dword ptr [esi]
+fmul  qword ptr [esi + edi]
+fmul  qword ptr [esi]
+fmul  st(0)
+fmul  st(0), st(0)
+fmulp  st(0)
+fnclex
+fninit
+fnop
+fnsave  [esi + edi]
+fnsave  [esi]
+fnstcw  word ptr [esi + edi]
+fnstcw  word ptr [esi]
+fnstenv  [esi + edi]
+fnstenv  [esi]
+fnstsw  ax
+fnstsw  word ptr [esi + edi]
+fnstsw  word ptr [esi]
+fpatan
+fprem
+fprem1
+fptan
+frndint
+frstor  [esi + edi]
+frstor  [esi]
+fscale
+fsetpm
+fsin
+fsincos
+fsqrt
+fst  dword ptr [esi + edi]
+fst  dword ptr [esi]
+fst  qword ptr [esi + edi]
+fst  qword ptr [esi]
+fst  st(0)
+fstp  dword ptr [esi + edi]
+fstp  dword ptr [esi]
+fstp  qword ptr [esi + edi]
+fstp  qword ptr [esi]
+fstp  st(0)
+fstp  tbyte ptr [esi + edi]
+fstp  tbyte ptr [esi]
+fsub  dword ptr [esi + edi]
+fsub  dword ptr [esi]
+fsub  qword ptr [esi + edi]
+fsub  qword ptr [esi]
+fsub  st(0)
+fsub  st(0), st(0)
+fsubp  st(0)
+fsubr  dword ptr [esi + edi]
+fsubr  dword ptr [esi]
+fsubr  qword ptr [esi + edi]
+fsubr  qword ptr [esi]
+fsubr  st(0)
+fsubr  st(0), st(0)
+fsubrp  st(0)
+ftst
+fucom  st(0)
+fucomi  st(0)
+fucomip  st(0)
+fucomp  st(0)
+fucompp
+fxam
+fxch  st(0)
+fxrstor  [esi + edi]
+fxrstor  [esi]
+fxsave  [esi + edi]
+fxsave  [esi]
+fxtract
+fyl2x
+fyl2xp1
+wait

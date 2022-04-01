@@ -1,0 +1,114 @@
+CC = gcc
+CFLAGS = -m32 -masm=intel
+INCLUDE_DIR = D:\Project\anti_vmp\InsGen\Obsidium\SDK\C\API
+LD_DIR = D:\Project\anti_vmp\InsGen\Obsidium\SDK\C\API
+LIB_NAME = obsidium
+
+# VMP_TMP = tmp.vmp
+VMP_CON = D:\Project\anti_vmp\InsGen\Obsidium\obsi_cmd.exe
+
+PIN_DLL = F:\anti_vmp\output\instracelog_anchorfinder_smc.dll
+# PIN_DLL = Z:\data\anti_vmp\output\instracelog_anchorfinder_smc.dll
+
+PROJ = D:\Project\anti_vmp\InsGen\Obsidium\123.opf
+
+OBJ = $(wildcard *.c)
+#OBJ = mov1.c mov2.c
+EXE_TARGET = $(subst .c,.exe,$(OBJ))
+
+EXE_EXIST = $(wildcard *.exe)
+OBS_EXIST = $(wildcard *.obs.exe)
+EXE_TMP = $(filter-out $(OBS_EXIST),$(EXE_EXIST))
+OBS_TARGET_RAW = $(subst .exe,.obs.exe,$(EXE_TMP))
+OBS_TARGET1 = $(subst .exe,_1.obs.exe,$(EXE_TMP))
+OBS_TARGET2 = $(subst .exe,_2.obs.exe,$(EXE_TMP))
+OBS_TARGET3 = $(subst .exe,_3.obs.exe,$(EXE_TMP))
+
+TRACE_TARGET = $(subst .obs.exe,.log,$(OBS_EXIST))
+
+LOGCMP_TARGET = $(subst _1.obs.exe,.logcmp,$(OBS_EXIST))
+
+
+all: exe vmp1 vmp2 vmp3 tmpclean pin
+
+.PHONY: exe
+exe: $(EXE_TARGET)
+
+.PHONY: vmp
+vmp: $(OBS_TARGET_RAW)
+
+.PHONY: vmp1
+vmp1: $(OBS_TARGET1)
+
+.PHONY: vmp2
+vmp2: $(OBS_TARGET2)
+
+.PHONY: vmp3
+vmp3: $(OBS_TARGET3)
+
+.PHONY: pin
+pin: $(TRACE_TARGET)
+
+.PHONY: logcmp
+logcmp: $(LOGCMP_TARGET)
+
+.PHONY: clean
+clean:
+	echo "please use tmpclean / vmpclean / logclean / execlean / cclean"
+
+.PHONY: tmpclean
+tmpclean:
+	rm -f *.tmp
+
+.PHONY: vmpclean
+vmpclean:
+	rm -f *.obs.exe
+
+.PHONY: logclean
+logclean:
+	rm -f *.log
+
+.PHONY: execlean
+execlean:
+	rm -f *.exe
+
+.PHONY: cclean
+cclean:
+	rm -f *.c
+
+.PHONY: clear
+clear: tmpclean vmpclean logclean execlean cclean
+
+.PHONY: debug
+debug:
+
+
+
+%.log:%.obs.exe
+	pin -t $(PIN_DLL) -o $@ -i ..\anchor.txt -- $<
+
+%.logcmp:%_1.obs.exe
+	pin -t $(PIN_DLL) -o $@ -i ..\cmpanchor.txt -- $<
+
+%.obs.exe:%.exe
+	$(VMP_CON) --project $(PROJ) --input $< --output $@
+	$(warning VMP Compiling $< To $@)
+
+%_1.obs.exe:%.exe
+	$(VMP_CON) --project $(PROJ) --input $< --output $@
+	$(warning VMP Compiling $< To $@)
+
+%_2.obs.exe:%.exe
+	$(VMP_CON) --project $(PROJ) --input $< --output $@
+	$(warning VMP Compiling $< To $@)
+
+%_3.obs.exe:%.exe
+	$(VMP_CON) --project $(PROJ) --input $< --output $@
+	$(warning VMP Compiling $< To $@)
+
+%.exe:%.c
+	$(CC) $(CFLAGS) $< -o $@ -I$(INCLUDE_DIR) -L$(LD_DIR) -l$(LIB_NAME)
+	$(warning CC $< -o $@)
+
+%.log:%.obs.exe
+	pin -t $(PIN_DLL) -o $@ -i ..\anchor.txt -- $<

@@ -1,0 +1,111 @@
+# ======== SDK Options ========
+INCLUDE_DIR = D:\Project\anti_vmp\InsGen\Themida\ThemidaSDK\Include\C
+LD_DIR = D:\Project\anti_vmp\InsGen\Themida\ThemidaSDK\Lib\COFF
+LIB_NAME = SecureEngineSDK32
+
+# ======== PIN Options ========
+PIN_DLL = F:\anti_vmp\output\instracelog_anchorfinder.dll
+# PIN_DLL = Z:\data\anti_vmp\output\instracelog_anchorfinder.dll
+
+# ======== VMP Options ========
+VM_TMP = D:\Project\anti_vmp\InsGen\Themida\fish220.tmd
+VM_CON = D:\Project\anti_vmp\InsGen\Themida\Themida.exe
+
+# ======== OUTPUT DIR ========
+# DIR = F:\anti_vmp\AnchorVerify\base_ring3_output_themida_tiger_black
+# ======== Makefile rules ========
+CC = gcc
+CFLAGS = -m32 -masm=intel
+
+OBJ = $(wildcard *.c)
+#OBJ = mov1.c mov2.c
+EXE_TARGET = $(subst .c,.exe,$(OBJ))
+
+EXE_EXIST = $(wildcard *.exe)
+VM_EXIST = $(wildcard *.vm.exe)
+FILE_TMP = $(filter-out $(VM_EXIST),$(EXE_EXIST))
+VM_TARGET = $(subst .exe,.vm.exe,$(FILE_TMP))
+VM_TARGET1 = $(subst .exe,_1.vm.exe,$(FILE_TMP))
+VM_TARGET2 = $(subst .exe,_2.vm.exe,$(FILE_TMP))
+VM_TARGET3 = $(subst .exe,_3.vm.exe,$(FILE_TMP))
+
+TRACE_TARGET = $(subst .vm.exe,.log,$(VM_EXIST))
+LOGCMP_TARGET = $(subst _1.vm.exe,.logcmp,$(VM_EXIST))
+
+.PHONY: all
+all: exe vmp1 vmp2 vmp3 pin
+
+.PHONY: exe
+exe: $(EXE_TARGET)
+
+.PHONY: vmp
+vmp: $(VM_TARGET)
+
+.PHONY: vmp1
+vmp1: $(VM_TARGET1)
+
+.PHONY: vmp2
+vmp2: $(VM_TARGET2)
+
+.PHONY: vmp3
+vmp3: $(VM_TARGET3)
+
+.PHONY: pin
+pin: $(TRACE_TARGET)
+
+.PHONY: logcmp
+logcmp: $(LOGCMP_TARGET)
+
+.PHONY: clean
+clean:
+	echo "please use vmpclean / logclean / execlean / cclean"
+
+.PHONY: vmpclean
+vmpclean:
+	rm -f *.vm.exe
+
+.PHONY: logclean
+logclean:
+	rm -f *.log
+
+.PHONY: execlean
+execlean:
+	rm -f *.exe
+
+.PHONY: cclean
+cclean:
+	rm -f *.c
+
+.PHONY: clear
+clear: vmpclean logclean execlean cclean
+
+.PHONY: debug
+debug:
+	echo $(FILE_TMP)
+
+
+%.log:%.vm.exe
+	pin -t $(PIN_DLL) -o $@ -i ..\anchor.txt -- $<
+
+%.logcmp:%_1.vm.exe
+	pin -t $(PIN_DLL) -o $@ -i ..\cmpanchor.txt -- $<
+
+%.vm.exe:%.exe
+	$(VM_CON) /q /protect $(VM_TMP) /inputfile $(DIR)\$< /outputfile $(DIR)\$@
+	$(warning VM Compiling $< To $@)
+
+%_1.vm.exe:%.exe
+	$(VM_CON) /q /protect $(VM_TMP) /inputfile $(DIR)\$< /outputfile $(DIR)\$@
+	$(warning VM Compiling $< To $@)
+
+%_2.vm.exe:%.exe
+	$(VM_CON) /q /protect $(VM_TMP) /inputfile $(DIR)\$< /outputfile $(DIR)\$@
+	$(warning VM Compiling $< To $@)
+
+%_3.vm.exe:%.exe
+	$(VM_CON) /q /protect $(VM_TMP) /inputfile $(DIR)\$< /outputfile $(DIR)\$@
+	$(warning VM Compiling $< To $@)
+
+%.exe:%.c
+	$(CC) $(CFLAGS) $< -o $@ -I$(INCLUDE_DIR) -L$(LD_DIR) -l$(LIB_NAME)
+	$(warning CC $< -o $@)

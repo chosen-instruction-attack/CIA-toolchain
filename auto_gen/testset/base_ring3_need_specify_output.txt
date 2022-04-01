@@ -1,0 +1,71 @@
+div  byte ptr [esi + edi]
+div  byte ptr [esi]
+div  cl
+div  cx
+div  dword ptr [esi + edi]
+div  dword ptr [esi]
+div  ecx
+idiv  byte ptr [esi + edi]
+idiv  byte ptr [esi]
+idiv  cl
+idiv  cx
+idiv  dword ptr [esi + edi]
+idiv  dword ptr [esi]
+idiv  ecx
+jmp  cx
+jmp  dword ptr [esi + edi]
+jmp  dword ptr [esi]
+jmp  ecx
+lar  cx, dx
+lar  cx, word ptr [esi + edi]
+lar  cx, word ptr [esi]
+lar  ecx, edx
+lar  ecx, word ptr [esi + edi]
+lar  ecx, word ptr [esi]
+lds  cx, ptr [esi + edi]
+lds  cx, ptr [esi]
+lds  ecx, ptr [esi + edi]
+lds  ecx, ptr [esi]
+les  cx, ptr [esi + edi]
+les  cx, ptr [esi]
+les  ecx, ptr [esi + edi]
+les  ecx, ptr [esi]
+lfs  cx, ptr [esi + edi]
+lfs  cx, ptr [esi]
+lfs  ecx, ptr [esi + edi]
+lfs  ecx, ptr [esi]
+lgs  cx, ptr [esi + edi]
+lgs  cx, ptr [esi]
+lgs  ecx, ptr [esi + edi]
+lgs  ecx, ptr [esi]
+lsl  cx, dx
+lsl  cx, word ptr [esi + edi]
+lsl  cx, word ptr [esi]
+lsl  ecx, dword ptr [esi + edi]
+lsl  ecx, dword ptr [esi]
+lsl  ecx, edx
+pop  cx
+pop  dword ptr [esi + edi]
+pop  dword ptr [esi]
+pop  ecx
+popal
+popaw
+popf
+popfd
+prefetchw  byte ptr [esi + edi]
+prefetchw  byte ptr [esi]
+push  0xa
+push  cx
+push  dword ptr [esi + edi]
+push  dword ptr [esi]
+push  ecx
+pushal
+pushaw
+pushf
+pushfd
+sahf
+stac
+stc
+std
+xgetbv
+xlatb
