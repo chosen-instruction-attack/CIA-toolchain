@@ -1,0 +1,6 @@
+aaa
+adc  byte ptr [esi + edi], 0xa
+bsf  cx, dx
+cmovae  cx, word ptr [esi + edi]
+mov  cx, 0xa
+mov  cx, dx

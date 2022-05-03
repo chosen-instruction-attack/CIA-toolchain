@@ -1,0 +1,142 @@
+[
+    {
+        "name": "vmp3",
+        "makefile_template":"makefile_template\\makefile_vmp3_allinone.txt",
+        "INCLUDE_DIR": "F:\\antivmp_env\\anti_vmp_insgen\\InsGen\\VMP3SDK\\include",
+        "LD_DIR": "F:\\antivmp_env\\anti_vmp_insgen\\InsGen\\VMP3SDK\\Lib",
+        "LIB_NAME": "VMProtectSDK32",
+        "VMP_PROJECT": "vmp_config\\vmp3.vmp",
+        "VMP_CON": "F:\\antivmp_env\\anti_vmp_insgen\\InsGen\\VMProtect_Con.exe",
+        "PIN_DLL": "..\\instracelog.dll",
+        "ANCHORPIN_DLL": "..\\instracelog.dll",
+        "customize": {
+            "VMP_OPTIONS": 786632
+        }
+    },
+    {
+        "name": "vmp2",
+        "makefile_template":"makefile_template\\makefile_vmp2_allinone.txt",
+        "INCLUDE_DIR": "F:\\antivmp_env\\anti_vmp_insgen\\InsGen\\VMP2SDK\\Include\\C",
+        "LD_DIR": "F:\\antivmp_env\\anti_vmp_insgen\\InsGen\\VMP2SDK\\Lib",
+        "LIB_NAME": "VMProtectSDK32",
+        "VMP_PROJECT": "vmp_config\\vmp2.vmp",
+        "VMP_CON": "F:\\antivmp_env\\anti_vmp_insgen\\InsGen\\VMP2SDK\\VMProtect_Con.exe",
+        "PIN_DLL": "..\\instracelog.dll",
+        "ANCHORPIN_DLL": "..\\instracelog.dll",
+        "customize": {
+            "VMP_OPTIONS": 0
+        }
+    },
+    {
+        "name": "themida",
+        "makefile_template":"makefile_template\\makefile_themida_allinone.txt",
+        "INCLUDE_DIR": "D:\\Project\\anti_vmp\\InsGen\\Themida\\ThemidaSDK\\Include\\C",
+        "LD_DIR": "D:\\Project\\anti_vmp\\InsGen\\Themida\\ThemidaSDK\\Lib\\COFF",
+        "LIB_NAME": "SecureEngineSDK32",
+        "VMP_PROJECT": "vmp_config\\fish220.tmd",
+        "VMP_CON": "D:\\Project\\anti_vmp\\InsGen\\Themida\\Themida.exe",
+        "PIN_DLL": "..\\instracelog.dll",
+        "ANCHORPIN_DLL": "..\\instracelog.dll",
+        "customize": {
+            "DIR": "F:\\anti_vmp\\AnchorVerify\\base_ring3_output_themida_tiger_black"
+        }
+    },
+    {
+        "name": "obsidium",
+        "makefile_template":"makefile_template\\makefile_obsidium_allinone.txt",
+        "INCLUDE_DIR": "D:\\Project\\anti_vmp\\InsGen\\Obsidium\\SDK\\C\\API",
+        "LD_DIR": "D:\\Project\\anti_vmp\\InsGen\\Obsidium\\SDK\\C\\API",
+        "LIB_NAME": "obsidium",
+        "VMP_PROJECT": "vmp_config\\123.opf",
+        "VMP_CON": "D:\\Project\\anti_vmp\\InsGen\\Obsidium\\obsi_cmd.exe",
+        "PIN_DLL": "..\\instracelog.dll",
+        "ANCHORPIN_DLL": "..\\instracelog.dll",
+        "customize": {
+
+        }
+    },
+    {
+        "name": "enigma",
+        "makefile_template":"makefile_template\\makefile_enigma_allinone.txt",
+        "INCLUDE_DIR": "D:\\Project\\anti_vmp\\InsGen\\Enigma\\Enigma_430\\EnigmaSDK\\VC",
+        "LD_DIR": "D:\\Project\\anti_vmp\\InsGen\\Enigma\\Enigma_430\\EnigmaSDK\\VC",
+        "LIB_NAME": "enigma_ide",
+        "VMP_PROJECT": "vmp_config\\v430.enigma",
+        "VMP_CON": "D:\\Project\\anti_vmp\\InsGen\\Enigma\\Enigma_430\\enigma32.exe",
+        "PIN_DLL": "..\\instracelog.dll",
+        "ANCHORPIN_DLL": "..\\instracelog.dll",
+        "customize": {
+
+        }
+    },
+    {
+        "name": "cvtiger_red",
+        "makefile_template":"makefile_template\\makefile_cv_allinone.txt",
+        "INCLUDE_DIR": "F:\\antivmp_env\\anti_vmp_insgen\\InsGen\\CVSDK\\include",
+        "LD_DIR": "F:\\antivmp_env\\anti_vmp_insgen\\InsGen\\CVSDK\\lib",
+        "LIB_NAME": "VirtualizerSDK32",
+        "VMP_PROJECT": "vmp_config\\tiger220_red.cv",
+        "VMP_CON": "F:\\antivmp_env\\anti_vmp_insgen\\InsGen\\CVSDK\\Virtualizer.exe",
+        "PIN_DLL": "..\\instracelog.dll",
+        "ANCHORPIN_DLL": "..\\instracelog.dll",
+        "customize": {
+
+        }
+    },
+    {
+        "name": "cvtiger_black",
+        "makefile_template":"makefile_template\\makefile_cv_allinone.txt",
+        "INCLUDE_DIR": "F:\\antivmp_env\\anti_vmp_insgen\\InsGen\\CVSDK\\include",
+        "LD_DIR": "F:\\antivmp_env\\anti_vmp_insgen\\InsGen\\CVSDK\\lib",
+        "LIB_NAME": "VirtualizerSDK32",
+        "VMP_PROJECT": "vmp_config\\tiger220_black.cv",
+        "VMP_CON": "F:\\antivmp_env\\anti_vmp_insgen\\InsGen\\CVSDK\\Virtualizer.exe",
+        "PIN_DLL": "..\\instracelog.dll",
+        "ANCHORPIN_DLL": "..\\instracelog.dll",
+        "customize": {
+
+        }
+    },
+    {
+        "name": "cvtiger_white",
+        "makefile_template":"makefile_template\\makefile_cv_allinone.txt",
+        "INCLUDE_DIR": "F:\\antivmp_env\\anti_vmp_insgen\\InsGen\\CVSDK\\include",
+        "LD_DIR": "F:\\antivmp_env\\anti_vmp_insgen\\InsGen\\CVSDK\\lib",
+        "LIB_NAME": "VirtualizerSDK32",
+        "VMP_PROJECT": "vmp_config\\tiger220.cv",
+        "VMP_CON": "F:\\antivmp_env\\anti_vmp_insgen\\InsGen\\CVSDK\\Virtualizer.exe",
+        "PIN_DLL": "..\\instracelog.dll",
+        "ANCHORPIN_DLL": "..\\instracelog.dll",
+        "customize": {
+
+        }
+    },
+    {
+        "name": "cvshark_white",
+        "makefile_template":"makefile_template\\makefile_cv_allinone.txt",
+        "INCLUDE_DIR": "F:\\antivmp_env\\anti_vmp_insgen\\InsGen\\CVSDK\\include",
+        "LD_DIR": "F:\\antivmp_env\\anti_vmp_insgen\\InsGen\\CVSDK\\lib",
+        "LIB_NAME": "VirtualizerSDK32",
+        "VMP_PROJECT": "vmp_config\\shark220.cv",
+        "VMP_CON": "F:\\antivmp_env\\anti_vmp_insgen\\InsGen\\CVSDK\\Virtualizer.exe",
+        "PIN_DLL": "..\\instracelog.dll",
+        "ANCHORPIN_DLL": "..\\instracelog.dll",
+        "customize": {
+
+        }
+    },
+    {
+        "name": "cvfish_white",
+        "makefile_template":"makefile_template\\makefile_cv_allinone.txt",
+        "INCLUDE_DIR": "F:\\antivmp_env\\anti_vmp_insgen\\InsGen\\CVSDK\\include",
+        "LD_DIR": "F:\\antivmp_env\\anti_vmp_insgen\\InsGen\\CVSDK\\lib",
+        "LIB_NAME": "VirtualizerSDK32",
+        "VMP_PROJECT": "vmp_config\\fish220.cv",
+        "VMP_CON": "F:\\antivmp_env\\anti_vmp_insgen\\InsGen\\CVSDK\\Virtualizer.exe",
+        "PIN_DLL": "..\\instracelog.dll",
+        "ANCHORPIN_DLL": "..\\instracelog.dll",
+        "customize": {
+
+        }
+    }
+]

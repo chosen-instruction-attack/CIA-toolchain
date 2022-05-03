@@ -1,7 +1,9 @@
 import os
+from re import A
 import keystone
 import logging
 import sys
+import json
 
 from InsHexLst import *
 from suffix import *
@@ -47,6 +49,10 @@ class GenTestFile:
         self.output_dir = output_dir
         self.makefile_template = makefile_template
 
+        if anchor_ins[-1] == ';':
+            anchor_ins = anchor_ins[:-1]
+        self.anchor_ins = anchor_ins
+
     def WriteFiles(self, clear=True):
         if clear:
             if os.path.exists(self.output_dir):
@@ -58,6 +64,9 @@ class GenTestFile:
                 os.mkdir(self.output_dir)
         with open(os.path.join(self.output_dir, "makefile"), "w") as f:
             f.writelines(self.makefile_template)
+
+        with open(os.path.join(self.output_dir, "anchor.txt"), "w") as f:
+            f.write(self.anchor_ins)
 
         ins_file_map = []
         for insn in self.ins_lst:
@@ -88,7 +97,6 @@ class TstFile:
         self.output_dir = output_dir
         self.anchor_ins = anchor_ins
         self.filename = []
-        
 
     def WriteGenTstFile(self, insn_str):
         insn_split = insn_str.split()
@@ -123,32 +131,48 @@ class TstFile:
             self.filename.append(filename)
         return filename
 
-
-def CVMakeTemplateReplace(template, new_dir):
-    pattern = "# DIR = "
+def MakefileTemplateReplace(template, config):
+    patterns = []
+    options = []
+    for key in config:
+        if not (key in ["name", "makefile_template", "customize"]):
+            patterns.append("# " + key)
+            options.append( (1, key) )
+        elif key == "customize":
+            for option in config[key]:
+                patterns.append("# " + key)
+                options.append( (2, key) )
     new_lines = []
     for line in template:
-        if line.find(pattern) != -1:
-            new_line = "DIR = " + new_dir
-        else:
+        for i in range(len(patterns)):
+            pattern = patterns[i]
+            flag = False
+            if line.find(pattern, 0, len(pattern)) != -1:
+                option = options[i]
+                flag = True
+                if option[0] == 1:
+                    key = option[1]
+                    new_line = key + " = " + config[key] + "\n"
+                else:
+                    new_line = key + " = " + config["customize"][key] + "\n"
+                break
+        if not flag:
             new_line = line
         new_lines.append(new_line)
     return new_lines
 
-def TMDMakeTemplateReplace(template, new_dir):
-    pattern = "# DIR = "
-    new_lines = []
-    for line in template:
-        if line.find(pattern) != -1:
-            new_line = "DIR = " + new_dir
-        else:
-            new_line = line
-        new_lines.append(new_line)
-    return new_lines
-
+def GetMakeTemplate(makefile_template_path, config):
+    try:
+        with open(makefile_template_path) as f:
+            makefile_template = f.readlines()
+    except:
+        raise ValueError("Makefile template path %s invaild" %os.path.abspath(makefile_template_path))
+    makefile_template_name = os.path.basename(makefile_template_path)
+    new_makefile_template = MakefileTemplateReplace(makefile_template, config)
+    return new_makefile_template
 
 def help():
-    print("python insset_test.py -i testset -o output_dir -t c_template -m makefile_template [-a anchor] [-l log_path]")
+    print("python insset_test.py -i testset -o output_dir -t c_template -n makefile_template_config_name -p makefile_template_config_path [-a anchor] [-l log_path]")
     exit()
 
 
@@ -157,7 +181,7 @@ import getopt
 
 if __name__ == "__main__":
     try:
-        opts, args = getopt.getopt(sys.argv[1:], "i:o:t:m:a:l:h")
+        opts, args = getopt.getopt(sys.argv[1:], "i:o:t:n:p:a:l:h")
     except:
         help()
 
@@ -170,8 +194,10 @@ if __name__ == "__main__":
             output_dir = arg
         elif opt == '-t':
             c_template = arg
-        elif opt == '-m':
-            makefile_template_path = arg
+        elif opt == '-n':
+            makefile_template_config_name = arg
+        elif opt == '-p':
+            makefile_template_config_path = arg
         elif opt == '-a':
             anchor = arg
         elif opt == '-l':
@@ -184,8 +210,8 @@ if __name__ == "__main__":
             raise ValueError("Parent dir of output_dir not exists: %s" %os.path.abspath(output_dir))
         if not os.path.exists(c_template):
             raise ValueError("Template file invalid: %s" %os.path.abspath(c_template))
-        if not os.path.exists(makefile_template_path):
-            raise ValueError("Makefile template invalid: %s" %os.path.abspath(makefile_template_path))
+        if not os.path.exists(makefile_template_config_path):
+            raise ValueError("Makefile template config invalid: %s" %os.path.abspath(makefile_template_config_path))
         if log_path != "":
             if not os.path.exists(os.path.dirname(log_path)):
                 raise ValueError("Parent dir of log_path not exists: %s" %os.path.abspath(os.path.dirname(log_path)))
@@ -208,13 +234,20 @@ if __name__ == "__main__":
 
     logger = Logger(log_path)           # logger is defined as a global variable, so we don't need to pass it as a parameter
 
-    with open(makefile_template_path) as f:
-        makefile_template = f.readlines()
-    makefile_template_name = os.path.basename(makefile_template_path)
-    if "cv" in makefile_template_name:
-        makefile_template = CVMakeTemplateReplace(makefile_template, output_dir)
-    elif "themida" in makefile_template_name:
-        makefile_template = TMDMakeTemplateReplace(makefile_template, output_dir)
+
+    with open(makefile_template_config_path) as f:
+        makefile_configs = json.load(f)
+    makefile_config = None
+    for config in makefile_configs:
+        if config["name"] == makefile_template_config_name:
+            makefile_config = config
+            break
+    if makefile_config:
+        makefile_template_path = makefile_config["makefile_template"]
+        makefile_template = GetMakeTemplate(makefile_template_path, makefile_config)
+    else:
+        raise ValueError("Cannot find makefile config [%s] in makefile config file" %makefile_template_config_name)
+
     gentstfile = GenTestFile(test_ins, anchor_ins, output_dir, makefile_template, c_template)
     file_ins_map = gentstfile.WriteFiles()
 

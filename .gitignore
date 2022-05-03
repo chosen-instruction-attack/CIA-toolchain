@@ -1,0 +1,7 @@
+*.opensdf
+*.sdf
+**/__pycache__
+
+auto_gen/just4test
+auto_gen/.vscode
+auto_gen/test.bat

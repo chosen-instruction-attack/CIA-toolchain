@@ -1,16 +1,41 @@
 [
     {
-        "vmp": "themida_tiger",
-        "testset": "D:\\Project\\anti_vmp\\InsGen\\InsTest\\20210412\\test.txt",
-        "output_dir": "F:\\anti_vmp\\AnchorVerify",
-        "c_template": "D:\\Project\\anti_vmp\\InsGen\\InsTest\\20210412\\base_ring3_output_template_themida_tiger.c",
-        "makefile_template": "D:\\Project\\anti_vmp\\InsGen\\makefile_themida_allinone.txt",
-        "testset_log_dir": "D:\\Project\\anti_vmp\\auto_gen\\log\\testset",
-        "testset_out_dir": "D:\\Project\\anti_vmp\\InsGen\\result\\20210412",
-        "anchor_log": "D:\\Project\\anti_vmp\\InsGen\\anchor_finder_log\\20210412",
-        "anchor_out": "D:\\Project\\anti_vmp\\InsGen\\result\\20210412",
-        "logcmp_log":"D:\\Project\\anti_vmp\\InsGen\\logcmp",
-        "action": ["gen", "make", "test", "logcmp"],
-        "action": ["clean", "test", "logcmp"]
+        "vmp": "vmp3",
+        "testset": ".\\testset\\just4test.txt",
+        "output_dir": ".\\just4test",
+        "c_template": ".\\vmp_template\\base_ring3_output_template_vmp.c",
+        "makefile_template_config": ".\\config\\makefile_config.json",
+        "testset_log_dir": ".\\just4test\\log",
+        "testset_out_dir": ".\\just4test\\log",
+        "anchor_log": ".\\just4test\\log",
+        "anchor_out": ".\\just4test\\log",
+        "action": ["clean", "gen", "make", "pin", "test"],
+        "state": "enable"
+    },
+    {
+        "vmp": "vmp2",
+        "testset": ".\\testset\\just4test.txt",
+        "output_dir": ".\\just4test",
+        "c_template": ".\\vmp_template\\base_ring3_output_template_vmp.c",
+        "makefile_template_config": ".\\config\\makefile_config.json",
+        "testset_log_dir": ".\\just4test\\log",
+        "testset_out_dir": ".\\just4test\\log",
+        "anchor_log": ".\\just4test\\log",
+        "anchor_out": ".\\just4test\\log",
+        "action": ["clean", "gen", "make", "pin", "test"],
+        "state": "enable"
+    },
+    {
+        "vmp": "cvfish_white",
+        "testset": ".\\testset\\just4test.txt",
+        "output_dir": ".\\just4test",
+        "c_template": ".\\vmp_template\\base_ring3_output_template_vmp.c",
+        "makefile_template_config": ".\\config\\makefile_config.json",
+        "testset_log_dir": ".\\just4test\\log",
+        "testset_out_dir": ".\\just4test\\log",
+        "anchor_log": ".\\just4test\\log",
+        "anchor_out": ".\\just4test\\log",
+        "action": ["clean", "gen", "make", "pin", "test"],
+        "state": "enable"
     }
 ]

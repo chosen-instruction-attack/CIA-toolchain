@@ -1,42 +1,51 @@
+# ======== SDK Options ========
+# INCLUDE_DIR =
+# LD_DIR =
+# LIB_NAME =
+
+# ======== VMP Options ========
+# VMP_PROJECT =
+# VMP_CON =
+# VMP_CONFIG =
+# VMP_OPTIONS =
+
+# ======== PIN Options ========
+# PIN_DLL = 
+# ANCHORPIN_DLL = 
+
+# ======== OUTPUT DIR ========
+
+# ======== Makefile rules ========
 CC = gcc
 CFLAGS = -m32 -masm=intel
-INCLUDE_DIR = D:\Project\anti_vmp\InsGen\VMP2SDK\Include\C
-LD_DIR = D:\Project\anti_vmp\InsGen\VMP2SDK\Lib
-LIB_NAME = VMProtectSDK32
-
-VMP_TMP = tmp.vmp
-VMP_CON = D:\Project\anti_vmp\InsGen\VMP2SDK\VMProtect_Con.exe
-VMP_CONFIG="<?xml version=\"1.0\" encoding=\"UTF-8\"?><Document><Protection InputFileName=\"%INPUTFILENAME%\" Options=\"%OPTIONS%\"><Messages /><Folders /><Procedures><Procedure MapAddress=\"VMProtectMarker1\" /></Procedures></Protection><Script/></Document>"
-VMP_OPTIONS = 0
-
-PIN_DLL = F:\anti_vmp\output\instracelog_anchorfinder.dll
-# PIN_DLL = Z:\data\anti_vmp\output\instracelog_anchorfinder.dll
 
 OBJ = $(wildcard *.c)
-#OBJ = mov1.c mov2.c
 EXE_TARGET = $(subst .c,.exe,$(OBJ))
 
 EXE_EXIST = $(wildcard *.exe)
 VMP_EXIST = $(wildcard *.vmp.exe)
 EXE_TMP = $(filter-out $(VMP_EXIST),$(EXE_EXIST))
-VMP_TARGET_RAW = $(subst .exe,.vmp.exe,$(EXE_TMP))
+VMP_TARGET = $(subst .exe,.vmp.exe,$(EXE_TMP))
 VMP_TARGET1 = $(subst .exe,_1.vmp.exe,$(EXE_TMP))
 VMP_TARGET2 = $(subst .exe,_2.vmp.exe,$(EXE_TMP))
 VMP_TARGET3 = $(subst .exe,_3.vmp.exe,$(EXE_TMP))
 
 TRACE_TARGET = $(subst .vmp.exe,.log,$(VMP_EXIST))
-
-LOGCMP_TARGET = $(subst _1.vmp.exe,.logcmp,$(VMP_EXIST))
+PINANCHOR_TARGET = $(subst .vmp.exe,.pinanchor,$(VMP_EXIST))
 
 WordSubst = $(subst .vmp.exe,.tmp,$1)
 
-all: exe vmp1 vmp2 vmp3 tmpclean pin
+
+all: exe vmp1 vmp2 vmp3 tmpclean pin anchor_pin
+
+.PHONY: build
+build: exe vmp1 vmp2 vmp3 tmpclean
 
 .PHONY: exe
 exe: $(EXE_TARGET)
 
 .PHONY: vmp
-vmp: $(VMP_TARGET_RAW)
+vmp: $(VMP_TARGET)
 
 .PHONY: vmp1
 vmp1: $(VMP_TARGET1)
@@ -50,8 +59,8 @@ vmp3: $(VMP_TARGET3)
 .PHONY: pin
 pin: $(TRACE_TARGET)
 
-.PHONY: logcmp
-logcmp: $(LOGCMP_TARGET)
+.PHONY: anchor_pin
+anchor_pin: $(PINANCHOR_TARGET)
 
 .PHONY: clean
 clean:
@@ -82,32 +91,25 @@ clear: tmpclean vmpclean logclean execlean cclean
 
 .PHONY: debug
 debug:
-
-
-
-%.log:%.vmp.exe
-	pin -t $(PIN_DLL) -o $@ -i ..\anchor.txt -- $<
-
-%.logcmp:%_1.vmp.exe
-	pin -t $(PIN_DLL) -o $@ -i ..\cmpanchor.txt -- $<
+	echo $(EXE_TMP)
 
 %.vmp.exe:%.exe
-	echo $(VMP_CONFIG) | sed -e "s/%OPTIONS%/$(VMP_OPTIONS)/" -e "s/%INPUTFILENAME%/$</" > $(call WordSubst, $@)
+	sed -e "s/%OPTIONS%/$(VMP_OPTIONS)/" -e "s/%INPUTFILENAME%/$</" $(VMP_PROJECT) > $(call WordSubst, $@)
 	$(VMP_CON) $< $@ -pf $(call WordSubst, $@)
 	$(warning VMP Compiling $< To $@)
 
 %_1.vmp.exe:%.exe
-	echo $(VMP_CONFIG) | sed -e "s/%OPTIONS%/$(VMP_OPTIONS)/" -e "s/%INPUTFILENAME%/$</" > $(call WordSubst, $@)
+	sed -e "s/%OPTIONS%/$(VMP_OPTIONS)/" -e "s/%INPUTFILENAME%/$</" $(VMP_PROJECT) > $(call WordSubst, $@)
 	$(VMP_CON) $< $@ -pf $(call WordSubst, $@)
 	$(warning VMP Compiling $< To $@)
 
 %_2.vmp.exe:%.exe
-	echo $(VMP_CONFIG) | sed -e "s/%OPTIONS%/$(VMP_OPTIONS)/" -e "s/%INPUTFILENAME%/$</" > $(call WordSubst, $@)
+	sed -e "s/%OPTIONS%/$(VMP_OPTIONS)/" -e "s/%INPUTFILENAME%/$</" $(VMP_PROJECT) > $(call WordSubst, $@)
 	$(VMP_CON) $< $@ -pf $(call WordSubst, $@)
 	$(warning VMP Compiling $< To $@)
 
 %_3.vmp.exe:%.exe
-	echo $(VMP_CONFIG) | sed -e "s/%OPTIONS%/$(VMP_OPTIONS)/" -e "s/%INPUTFILENAME%/$</" > $(call WordSubst, $@)
+	sed -e "s/%OPTIONS%/$(VMP_OPTIONS)/" -e "s/%INPUTFILENAME%/$</" $(VMP_PROJECT) > $(call WordSubst, $@)
 	$(VMP_CON) $< $@ -pf $(call WordSubst, $@)
 	$(warning VMP Compiling $< To $@)
 
@@ -116,4 +118,7 @@ debug:
 	$(warning CC $< -o $@)
 
 %.log:%.vmp.exe
-	pin -t $(PIN_DLL) -o $@ -i ..\anchor.txt -- $<
+	pin -t $(PIN_DLL) -o $@ -i anchor.txt -- $<
+
+%.pinanchor:%.vm.exe
+	pin -t $(PIN_DLL) -s $< -i anchor.txt -- $<

@@ -6,7 +6,7 @@
 @Author  :   nen9mA0 
 @Version :   1.0
 @Contact :   
-@License :   GPL
+@License :   BSD
 @Desc    :   None
 '''
 # Modified from TraceAnalysis.py
@@ -26,6 +26,8 @@ from suffix import *
 
 
 anchor = "cmpxchg eax, eax"
+log_threshold = 10*1024
+except_logfile = ["pin.log", "pintool.log"]
 
 class Logger:
     # stream_loglevel = (logging.WARNING, logging.ERROR, logging.DEBUG,)
@@ -183,21 +185,24 @@ class AnchorFinder(object):
         return anchorlst
 
 
-def FindVerifyAnchor(dir_path, finder, logger=None, in_folders=None):
+def FindVerifyAnchor(dir_path, finder, in_folder, logger=None):
+    global log_threshold
+
     logfiles = {}
-    if in_folders:
-        folders = in_folders
-    else:
-        folders = os.listdir(dir_path)
-    for folder in folders:
-        tmp = os.path.join(dir_path, folder)
-        if os.path.isdir(tmp):
-            os.chdir(tmp)
-            new_path = tmp
-            for files in os.listdir():
-                tmp = os.path.join(new_path, files)
-                if not os.path.isdir(tmp):
-                    if tmp.endswith(".log") and not tmp.endswith("\\pin.log"):
+    logfailed = {}
+    tmp = os.path.join(dir_path, in_folder)
+    if os.path.isdir(tmp):
+        os.chdir(tmp)
+        new_path = tmp
+        for files in os.listdir():
+            tmp = os.path.join(new_path, files)
+            if not os.path.isdir(tmp):
+                if tmp.endswith(".log"):
+                    filename = os.path.basename(tmp)
+                    if filename in except_logfile:
+                        continue
+                    fsize = os.path.getsize(tmp)
+                    if fsize > log_threshold:
                         tracefile = tmp
                         res = finder.SearchNewAnchor(tmp)
                         if len(res) != 0:
@@ -211,25 +216,38 @@ def FindVerifyAnchor(dir_path, finder, logger=None, in_folders=None):
                                     logger.info("____ occur %d times ____\n    %x: %s" %(len(res), addr, anchor))
                             # for anchor, addr in res:
                             #     logger.info("    %x: %s" %(addr, anchor))
+                    else:
+                        keyname_index = files.find("_")
+                        keyname = files[:keyname_index]
+                        if keyname in logfailed:
+                            logfailed[keyname] += 1
+                        else:
+                            logfailed[keyname] = 1
+                        if logger != None:
+                            logger.info("%s:" %(files.rstrip(".log")))
+                            logger.info("LOG LENGTH TOO SHORT")
     os.chdir(dir_path)
-    return logfiles
+    return logfiles, logfailed
 
 
-def FindVerifyRetAnchor(dir_path, finder, logger=None, in_folders=None):
+def FindVerifyRetAnchor(dir_path, finder, in_folder, logger=None):
+    global log_threshold
+
     logfiles = {}
-    if in_folders:
-        folders = in_folders
-    else:
-        folders = os.listdir(dir_path)
-    for folder in folders:
-        tmp = os.path.join(dir_path, folder)
-        if os.path.isdir(tmp):
-            os.chdir(tmp)
-            new_path = tmp
-            for files in os.listdir():
-                tmp = os.path.join(new_path, files)
-                if not os.path.isdir(tmp):
-                    if tmp.endswith(".log") and not tmp.endswith("\\pin.log"):
+    logfailed = {}
+    tmp = os.path.join(dir_path, in_folder)
+    if os.path.isdir(tmp):
+        os.chdir(tmp)
+        new_path = tmp
+        for files in os.listdir():
+            tmp = os.path.join(new_path, files)
+            if not os.path.isdir(tmp):
+                if tmp.endswith(".log"):
+                    filename = os.path.basename(tmp)
+                    if filename in except_logfile:
+                        continue
+                    fsize = os.path.getsize(tmp)
+                    if fsize > log_threshold:
                         tracefile = tmp
                         res = finder.SearchRetAnchor(tmp)
                         if len(res) != 0:
@@ -243,8 +261,18 @@ def FindVerifyRetAnchor(dir_path, finder, logger=None, in_folders=None):
                                     logger.info("____ occur %d times ____\n    %x: %s" %(len(res), addr, anchor))
                             # for anchor, addr in res:
                             #     logger.info("    %x: %s" %(addr, anchor))
+                    else:
+                        keyname_index = files.find("_")
+                        keyname = files[:keyname_index]
+                        if keyname in logfailed:
+                            logfailed[keyname] += 1
+                        else:
+                            logfailed[keyname] = 1
+                        if logger != None:
+                            logger.info("%s:" %(files.rstrip(".log")))
+                            logger.info("LOG LENGTH TOO SHORT")
     os.chdir(dir_path)
-    return logfiles
+    return logfiles, logfailed
 
 
 def GetVmpexe(folder):
@@ -274,8 +302,29 @@ def GetVmpNum(file_lst, suffix):
     return max_num
 
 
+def GetFileNum(file_lst, suffix):
+    suffix_begin = -len(suffix)
+    file_dict = {}
+    for file in file_lst:
+        if file.endswith(suffix) and file[:suffix_begin].rfind(".") == -1:
+            num_begin_index = file[:suffix_begin].rfind("_")
+            if num_begin_index != -1:
+                filename = file[:num_begin_index]
+                if filename in file_dict:
+                    file_dict[filename] += 1
+                else:
+                    file_dict[filename] = 1
+            else:
+                filename = file[:suffix_begin]
+                if filename in file_dict:
+                    raise ValueError("filename: %s has in dict" %filename)
+                else:
+                    file_dict[filename] = 1
+    return max_num, file_dict
+
+
 def help():
-    print("python AnchorFinder.py -d dir1 dir2... -m mode [-a anchor -b base_dir -l logfile]")
+    print("python AnchorFinder.py -d dir -m mode [-a anchor -b base_dir -l logfile]")
     print("mode can be 3 or r, represent 3anchor or retanchor")
     exit()
 
@@ -298,7 +347,7 @@ if __name__ == "__main__":
         if opt == '-h':
             help()
         elif opt == '-d':
-            folders = ParseDirs(arg)
+            folder = arg
         elif opt == '-l':
             logfile = arg
         elif opt == '-b':
@@ -310,10 +359,9 @@ if __name__ == "__main__":
             mode = arg
 
     try:        # check param
-        for dir_tmp in folders:
-            tstdir = os.path.join(base_dir, dir_tmp)
-            if not os.path.exists(tstdir):
-                raise ValueError("folder %s invalid" %tstdir)
+        tstdir = os.path.join(base_dir, folder)
+        if not os.path.exists(tstdir):
+            raise ValueError("folder %s invalid" %tstdir)
         if len(logfile) > 0:
             log_dir = os.path.dirname(logfile)
             if not os.path.exists(log_dir):
@@ -326,41 +374,149 @@ if __name__ == "__main__":
 
     if not base_dir == "":
         verify_dir = base_dir
-        in_folders = folders
+        in_folder = folder
     else:
-        verify_dir = os.path.dirname(folders[0])
-        in_folders = [os.path.basename(folder) for folder in folders]
+        verify_dir = os.path.basename(folder)
+        in_folder = os.path.dirname(folder)
 
     logger = Logger(logfile)
     finder = AnchorFinder(logger)
+    finder.SetSourcePath(verify_dir)
 
-
+# ====================
     dir_path = os.getcwd()
 
+    max_num = 0
+    vmpexe_suffix = GetVmpexe(in_folder)
+    tmp = os.path.join(base_dir, in_folder)
+    if os.path.isdir(tmp):
+        os.chdir(tmp)
+        files = os.listdir()
+        tmp_num = GetVmpNum(files, vmpexe_suffix)
+        if tmp_num > max_num:
+            max_num = tmp_num
+    else:
+        raise ValueError("%s is not a folder" %tmp)
+
+    os.chdir(dir_path)
+# ====================
+
     if mode == '3':
-        testdict = FindVerifyAnchor(verify_dir, finder, logger=logger, in_folders=in_folders)
+        testdict, logfailed = FindVerifyAnchor(verify_dir, finder, in_folder, logger=logger)
     elif mode == 'r':
-        testdict = FindVerifyRetAnchor(verify_dir, finder, logger=logger, in_folders=in_folders)
+        testdict, logfailed = FindVerifyRetAnchor(verify_dir, finder, in_folder, logger=logger)
 
     anchorset = {}
     for key in testdict:
-        filename = key[:-6]
-        if filename in anchorset:
-            anchorset[filename].append(len(testdict[key]))
+        filename = os.path.basename(key)
+        index = filename.rfind("_")
+        newkey = filename[:index]
+        if newkey in anchorset:
+            anchorset[newkey].append(len(testdict[key]))
         else:
-            anchorset[filename] = [len(testdict[key])]
+            anchorset[newkey] = [len(testdict[key])]
 
-    for key in anchorset:
-        if len(anchorset[key]) != 3:
-            logger.error("File: %s   len != 3, len = %d" %(key, len(anchorset[key])))
-            print("File: %s   len != 3, len = %d" %(key, len(anchorset[key])))
-        else:
-            flag = 0
-            for i in anchorset[key]:
-                if i == 1:
-                    flag += 1
-            if flag == 3:
-                res = testdict[key+"_1.log"]
-                anchor, addr = res[0]
-                logger.warning("%s  ; File: %s" %(anchor, key))
-                print("%s" %anchor)
+
+    a, srcfiledict = GetFileNum(files, suffix)          # get source files
+    a, exefiledict = GetFileNum(files, exe_suffix)      # get exe files
+    a, vmpfiledict = GetFileNum(files, vmpexe_suffix)   # get vmp files
+    a, logfiledict = GetFileNum(files, log_suffix)      # get log files
+
+    noexe_lst = []
+    novmp_lst = []
+    nolog_lst = []
+    lossvmp_lst = []
+    losslog_lst = []
+
+    anchor_lst = []
+    not_always_appear = []
+    appear_multiple = []
+
+
+    for file in srcfiledict:                            # traverse every source file
+        if file in exefiledict:                         # traverse every executable
+            if file in vmpfiledict:                     # traverse every obfuscated file
+                if vmpfiledict[file] != max_num:
+                    lossvmp_lst.append(file)            # some executable cannot be obfuscated
+                if file in logfiledict:
+                    if logfiledict[file] != max_num:    # some obfuscated files have error in running pintools
+                        losslog_lst.append(file)
+                    log_num = logfiledict[file]
+                    if file in logfailed:               # some trace files are too small, which indicates that something goes wrong when obfuscating
+                        log_num -= logfailed[file]
+                    if file in anchorset and log_num>0:
+                        if len(anchorset[file]) != log_num:
+                            for i in range(1, max_num+1):
+                                keyname = os.path.join(tmp, file+"_%d.log"%i)
+                                if keyname in testdict:
+                                    res = testdict[keyname]
+                                    break
+                            inst, addr = res[0]
+                            not_always_appear.append( (inst, log_num, file, os.path.join(tmp, file)) )
+                        else:
+                            flag = 0
+                            for i in anchorset[file]:
+                                if i == 1:
+                                    flag += 1
+                            if flag == log_num:
+                                for i in range(1, max_num+1):
+                                    keyname = os.path.join(tmp, file+"_%d.log"%i)
+                                    if keyname in testdict:
+                                        res = testdict[keyname]
+                                        break
+                                anchor, addr = res[0]
+                                anchor_lst.append( (anchor, log_num, os.path.join(tmp, file)) )
+                            else:
+                                for i in range(1, max_num+1):
+                                    keyname = os.path.join(tmp, file+"_%d.log"%i)
+                                    if keyname in testdict:
+                                        res = testdict[keyname]
+                                        break
+                                inst, addr = res[0]
+                                appear_multiple.append( (inst, flag, log_num, file, os.path.join(tmp, file)) )
+                else:                                   # if we have obfuscated files but don't have any trace file, the obfuscated file has error in running pintools
+                    nolog_lst.append(file)
+            else:                                       # if we have executable but don't have any obfusated file, the executable has error in obfuscate
+                novmp_lst.append(file)
+        else:                                           # if we have source file but don't have executable, the source file has compile error
+            noexe_lst.append(file)
+
+
+    logger.error("========= Anchor =========")
+    for anchor, log_num, filepath in anchor_lst:
+        logger.error("%s  ; %d ; File: %s.c" %(anchor, log_num, filepath))
+        print("%s" %anchor)
+
+    logger.error("========= Not Always Appear =========")
+    for inst, log_num, file, filepath in not_always_appear:
+        logger.error("%s ; %d/%d ; %s ; File: %s.c" %(inst, len(anchorset[file]), log_num, anchorset[file], filepath))
+        print("%s ; %d/%d ; %s ; File: %s.c" %(inst, len(anchorset[file]), log_num, anchorset[file], filepath))
+
+    logger.error("========= Appear Multiple Times =========")
+    for inst, flag, log_num, file, filepath in appear_multiple:
+        logger.error("%s  ; %d/%d ; %s ; File: %s.c" %(inst, flag, log_num, anchorset[file], filepath))
+
+    logger.error("=== No EXE ===")
+    for exe in noexe_lst:
+        logger.error(exe)
+
+    logger.error("=== No VMP ===")
+    for vmp in novmp_lst:
+        logger.error(vmp)
+
+    logger.error("=== No LOG ===")
+    for log in nolog_lst:
+        logger.error(log)
+
+    logger.error("=== Loss VMP ===")
+    for vmpfile in lossvmp_lst:
+        logger.error("%s : %d/%d" %(vmpfile, max_num - vmpfiledict[vmpfile], max_num))
+
+    logger.error("=== Loss LOG ===")
+    for logfile in losslog_lst:
+        logger.error("%s : %d/%d" %(logfile, max_num - logfiledict[logfile], max_num))
+
+    logger.error("=== LOG TOO SHORT ===")
+    for logfile in logfailed:
+        logger.error("%s : %d" %(logfile, logfailed[logfile]))
+

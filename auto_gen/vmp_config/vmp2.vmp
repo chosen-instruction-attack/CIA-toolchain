@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Document>
+    <Protection InputFileName="%INPUTFILENAME%" Options="%OPTIONS%">
+        <Messages />
+        <Folders />
+        <Procedures>
+        <Procedure MapAddress="VMProtectMarker1" />
+        </Procedures>
+    </Protection>
+    <Script/>
+</Document>

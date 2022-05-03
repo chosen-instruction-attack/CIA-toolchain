@@ -1,62 +1,65 @@
 # ======== SDK Options ========
-INCLUDE_DIR = D:\Project\anti_vmp\InsGen\CVSDK\include
-LD_DIR = D:\Project\anti_vmp\InsGen\CVSDK\lib
-LIB_NAME = VirtualizerSDK32
-
-# ======== PIN Options ========
-PIN_DLL = F:\anti_vmp\output\instracelog_anchorfinder.dll
-# PIN_DLL = Z:\data\anti_vmp\output\instracelog_anchorfinder.dll
+# INCLUDE_DIR =
+# LD_DIR =
+# LIB_NAME =
 
 # ======== VMP Options ========
-CV_TMP = D:\Project\anti_vmp\InsGen\CVSDK\fish220.cv
-CV_CON = D:\Project\anti_vmp\InsGen\CVSDK\Virtualizer.exe
+# VMP_PROJECT =
+# VMP_CON =
+
+# ======== PIN Options ========
+# PIN_DLL =
+# ANCHORPIN_DLL =
 
 # ======== OUTPUT DIR ========
-# DIR = F:\anti_vmp\output\test_allinone
+# DIR =
 
 # ======== Makefile rules ========
 CC = gcc
 CFLAGS = -m32 -masm=intel
 
 OBJ = $(wildcard *.c)
-#OBJ = mov1.c mov2.c
 EXE_TARGET = $(subst .c,.exe,$(OBJ))
 
 EXE_EXIST = $(wildcard *.exe)
-CV_EXIST = $(wildcard *.cv.exe)
-FILE_TMP = $(filter-out $(CV_EXIST),$(EXE_EXIST))
-CV_TARGET = $(subst .exe,.cv.exe,$(FILE_TMP))
-CV_TARGET1 = $(subst .exe,_1.cv.exe,$(FILE_TMP))
-CV_TARGET2 = $(subst .exe,_2.cv.exe,$(FILE_TMP))
-CV_TARGET3 = $(subst .exe,_3.cv.exe,$(FILE_TMP))
+VMP_EXIST = $(wildcard *.cv.exe)
+EXE_TMP = $(filter-out $(VMP_EXIST),$(EXE_EXIST))
+VMP_TARGET = $(subst .exe,.cv.exe,$(EXE_TMP))
+VMP_TARGET1 = $(subst .exe,_1.cv.exe,$(EXE_TMP))
+VMP_TARGET2 = $(subst .exe,_2.cv.exe,$(EXE_TMP))
+VMP_TARGET3 = $(subst .exe,_3.cv.exe,$(EXE_TMP))
 
-TRACE_TARGET = $(subst .cv.exe,.log,$(CV_EXIST))
+TRACE_TARGET = $(subst .cv.exe,.log,$(VMP_EXIST))
+PINANCHOR_TARGET = $(subst .cv.exe,.pinanchor,$(VM_EXIST))
 
-LOGCMP_TARGET = $(subst _1.cv.exe,.logcmp,$(CV_EXIST))
+
 
 .PHONY: all
-all: exe vmp1 vmp2 vmp3 pin
+all: exe vmp1 vmp2 vmp3 pin anchor_pin
+
+.PHONY: build
+build: exe vmp1 vmp2 vmp3
 
 .PHONY: exe
 exe: $(EXE_TARGET)
 
 .PHONY: vmp
-vmp: $(CV_TARGET)
+vmp: $(VMP_TARGET)
 
 .PHONY: vmp1
-vmp1: $(CV_TARGET1)
+vmp1: $(VMP_TARGET1)
 
 .PHONY: vmp2
-vmp2: $(CV_TARGET2)
+vmp2: $(VMP_TARGET2)
 
 .PHONY: vmp3
-vmp3: $(CV_TARGET3)
+vmp3: $(VMP_TARGET3)
 
 .PHONY: pin
 pin: $(TRACE_TARGET)
 
-.PHONY: logcmp
-logcmp: $(LOGCMP_TARGET)
+.PHONY: anchor_pin
+anchor_pin: $(PINANCHOR_TARGET)
 
 .PHONY: clean
 clean:
@@ -83,14 +86,8 @@ clear: vmpclean logclean execlean cclean
 
 .PHONY: debug
 debug:
-	echo $(FILE_TMP)
+	echo $(EXE_TMP)
 
-
-%.log:%.cv.exe
-	pin -t $(PIN_DLL) -o $@ -i ..\anchor.txt -- $<
-
-%.logcmp:%_1.cv.exe
-	pin -t $(PIN_DLL) -o $@ -i ..\cmpanchor.txt -- $<
 
 %.cv.exe:%.exe
 	$(CV_CON) /q /protect $(CV_TMP) /inputfile $(DIR)\$< /outputfile $(DIR)\$@
@@ -111,3 +108,10 @@ debug:
 %.exe:%.c
 	$(CC) $(CFLAGS) $< -o $@ -I$(INCLUDE_DIR) -L$(LD_DIR) -l$(LIB_NAME)
 	$(warning CC $< -o $@)
+
+%.log:%.cv.exe
+	pin -t $(PIN_DLL) -o $@ -i anchor.txt -- $<
+
+%.pinanchor:%.cv.exe
+	pin -t $(PIN_DLL) -s $< -i anchor.txt -- $<
+	
